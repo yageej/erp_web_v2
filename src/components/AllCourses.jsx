@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import MyCourseLogo from "../assets/courselogo.jpg";
+import { Link } from "react-router-dom";
 
 const AllCourses = () => {
   return (
@@ -36,8 +37,54 @@ const AllCourses = () => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">View Course</Button>
-            <Button size="small">Learn More</Button>
+            <Link to="/Course&Training/View-Course">
+              <Button size="small">View Course</Button>
+            </Link>
+            <Button size="small">Add to Favorites</Button>
+          </CardActions>
+        </Card>
+        <Card sx={{ maxWidth: 345, margin: 4 }}>
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            height="140"
+            image={MyCourseLogo}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              React Course
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              This is a sample course for React
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Link to="/Course&Training/View-Course">
+              <Button size="small">View Course</Button>
+            </Link>
+            <Button size="small">Add to Favorites</Button>
+          </CardActions>
+        </Card>
+        <Card sx={{ maxWidth: 345, margin: 4 }}>
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            height="140"
+            image={MyCourseLogo}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              React Course
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              This is a sample course for React
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Link to="/Course&Training/View-Course">
+              <Button size="small">View Course</Button>
+            </Link>
+            <Button size="small">Add to Favorites</Button>
           </CardActions>
         </Card>{" "}
         <Card sx={{ maxWidth: 345, margin: 4 }}>
@@ -56,8 +103,10 @@ const AllCourses = () => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">View Course</Button>
-            <Button size="small">Learn More</Button>
+            <Link to="/Course&Training/View-Course">
+              <Button size="small">View Course</Button>
+            </Link>
+            <Button size="small">Add to Favorites</Button>
           </CardActions>
         </Card>{" "}
         <Card sx={{ maxWidth: 345, margin: 4 }}>
@@ -76,8 +125,10 @@ const AllCourses = () => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">View Course</Button>
-            <Button size="small">Learn More</Button>
+            <Link to="/Course&Training/View-Course">
+              <Button size="small">View Course</Button>
+            </Link>
+            <Button size="small">Add to Favorites</Button>
           </CardActions>
         </Card>{" "}
         <Card sx={{ maxWidth: 345, margin: 4 }}>
@@ -96,48 +147,10 @@ const AllCourses = () => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">View Course</Button>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>{" "}
-        <Card sx={{ maxWidth: 345, margin: 4 }}>
-          <CardMedia
-            component="img"
-            alt="green iguana"
-            height="140"
-            image={MyCourseLogo}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              React Course
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              This is a sample course for React
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">View Course</Button>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>{" "}
-        <Card sx={{ maxWidth: 345, margin: 4 }}>
-          <CardMedia
-            component="img"
-            alt="green iguana"
-            height="140"
-            image={MyCourseLogo}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              React Course
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              This is a sample course for React
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">View Course</Button>
-            <Button size="small">Learn More</Button>
+            <Link to="/Course&Training/View-Course">
+              <Button size="small">View Course</Button>
+            </Link>
+            <Button size="small">Add to Favorites</Button>
           </CardActions>
         </Card>{" "}
       </Box>

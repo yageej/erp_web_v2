@@ -36,8 +36,9 @@ const CompletedCourses = () => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">View Course</Button>
-          <Button size="small">Learn More</Button>
+          <Button size="small" disabled>
+            View Course
+          </Button>
         </CardActions>
       </Card>
     </>

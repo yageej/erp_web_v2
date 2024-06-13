@@ -15,6 +15,7 @@ import MyATDApproval from "./components/MyATDApproval";
 import Resignation from "./components/Resignation";
 import ReturnToWorkOrder from "./components/ReturnToWorkOrder";
 import AddTaskForm from "./components/AddTaskForm";
+import ViewCourse from "./components/ViewCourse";
 
 function App() {
   return (
@@ -25,7 +26,6 @@ function App() {
           <Route path="/Home" element={<Attendance />}></Route>
           <Route path="/Tasks" element={<Tasks />}></Route>
           <Route path="/Tasks/Addtaskform" element={<AddTaskForm />}></Route>
-
           <Route path="/Documents" element={<Documents />}></Route>
           <Route
             path="/Attendance&Roster"
@@ -34,6 +34,10 @@ function App() {
           <Route
             path="/Course&Training"
             element={<CourseandTraining />}
+          ></Route>{" "}
+          <Route
+            path="/Course&Training/View-Course"
+            element={<ViewCourse />}
           ></Route>
           <Route path="/Survey" element={<Survey />}></Route>
           <Route path="/MyProfile" element={<MyProfile />}></Route>

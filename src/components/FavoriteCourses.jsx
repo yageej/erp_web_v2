@@ -37,7 +37,7 @@ const FavoriteCourses = () => {
         </CardContent>
         <CardActions>
           <Button size="small">View Course</Button>
-          <Button size="small">Learn More</Button>
+          <Button size="small">Remove from Favorites</Button>
         </CardActions>
       </Card>
     </>
