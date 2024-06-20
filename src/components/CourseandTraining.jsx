@@ -18,7 +18,8 @@ import AllCourses from "./AllCourses";
 import FavoriteCourses from "./FavoriteCourses";
 import CompletedCourses from "./CompletedCourses";
 
-const CourseandTraining = () => {
+const CourseandTraining = (props) => {
+  const { title } = props;
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
@@ -27,7 +28,7 @@ const CourseandTraining = () => {
 
   return (
     <>
-      <h3>Courses</h3>
+      <h3>{title}</h3>
       <Box sx={{ width: "100%", typography: "body1" }}>
         {/* <div>
           <IconButton sx={{ float: "right", fontSize: 16 }}>
@@ -48,13 +49,13 @@ const CourseandTraining = () => {
             </TabList>
           </Box>
           <TabPanel value="1" sx={{}}>
-            <AllCourses />
+            <AllCourses title="All Courses" />
           </TabPanel>
           <TabPanel value="2">
-            <FavoriteCourses />
+            <FavoriteCourses title="Favorite Courses" />
           </TabPanel>
           <TabPanel value="3">
-            <CompletedCourses />
+            <CompletedCourses title="Completed Courses" />
           </TabPanel>
         </TabContext>
       </Box>

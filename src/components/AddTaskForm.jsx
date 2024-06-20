@@ -12,7 +12,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const AddTaskForm = () => {
+const AddTaskForm = (props) => {
+  const { title } = props;
   const [task, setTask] = React.useState("");
   const [task2, setTask2] = React.useState("");
   const [task3, setTask3] = React.useState("");
@@ -28,7 +29,7 @@ const AddTaskForm = () => {
   };
   return (
     <>
-      <h3>Add Task Form</h3>
+      <h3>{title}</h3>
       <Box
         component="form"
         sx={{

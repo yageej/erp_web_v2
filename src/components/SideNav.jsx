@@ -60,9 +60,12 @@ const SideNav = (props) => {
   const [openList, setOpenList] = React.useState(false);
   const [openList1, setOpenList1] = React.useState(false);
 
+  const [selectedItem, setSelectedItem] = React.useState(false);
+
   const handleClick = () => {
     setOpenList(!openList);
     setOpen(true);
+    setSelectedItem(true);
   };
   const handleClick2 = () => {
     setOpenList1(!openList1);
@@ -193,7 +196,11 @@ const SideNav = (props) => {
       <div className={props.class}>
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
-          <AppBar position="fixed" open={open} sx={{ bgcolor: "#3c4454" }}>
+          <AppBar
+            position="fixed"
+            open={open}
+            sx={{ bgcolor: "#F6F5F2", color: "black" }}
+          >
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -216,7 +223,7 @@ const SideNav = (props) => {
             <DrawerHeader>
               <IconButton onClick={handleDrawerClose}>
                 <Brightness5TwoToneIcon /> &nbsp; BEEPO 2.0
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {theme.direction === "rtl" ? (
                   <ChevronRightIcon />
                 ) : (
@@ -229,7 +236,6 @@ const SideNav = (props) => {
               sx={{
                 width: "100%",
                 maxWidth: 500,
-                bgcolor: "background.paper",
               }}
               component="nav"
               aria-labelledby="nested-list-subheader"
@@ -252,7 +258,7 @@ const SideNav = (props) => {
                     style={{ textDecoration: "none", color: "inherit" }}
                     to="/Home"
                   >
-                    <ListItemButton sx={{ pl: 4 }} selected>
+                    <ListItemButton sx={{ pl: 4 }}>
                       <ListItemIcon>
                         <HomeTwoToneIcon />
                       </ListItemIcon>
@@ -279,7 +285,7 @@ const SideNav = (props) => {
                     style={{ textDecoration: "none", color: "inherit" }}
                     to="/Documents"
                   >
-                    <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemButton sx={{ pl: 4 }} selected={selectedItem}>
                       <ListItemIcon>
                         <TopicTwoToneIcon />
                       </ListItemIcon>

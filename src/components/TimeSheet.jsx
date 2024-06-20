@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-
 import { DataGrid } from "@mui/x-data-grid";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -10,7 +9,19 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import DataGridComponent from "./DataGridComponent";
+import DatePickerComponent from "./DatePickerComponent";
+import { Button } from "@mui/material";
+import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
+
 const TimeSheet = () => {
+  const renderActionButton = (p) => {
+    return (
+      <Button variant="outlined">
+        <DriveFileRenameOutlineTwoToneIcon fontSize="small" />
+      </Button>
+    );
+  };
   const columns = [
     { field: "date", headerName: "Date", width: 100 },
     { field: "day", headerName: "Day", width: 100 },
@@ -26,10 +37,11 @@ const TimeSheet = () => {
     { field: "actual3", headerName: "Actual", width: 100 },
 
     {
-      field: "Action",
+      field: "",
       headerName: "Action",
-      //   type: "number",
-      width: 90,
+      width: 100,
+      // valueGetter: actionModify,
+      renderCell: renderActionButton,
     },
   ];
 
@@ -189,32 +201,10 @@ const TimeSheet = () => {
   ];
   return (
     <>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer
-          components={["DatePicker"]}
-          sx={{
-            "& > :not(style)": { m: 1, width: "10ch" },
-          }}
-        >
-          <DatePicker
-            label="Attendance Date"
-            slotProps={{ textField: { size: "small" } }}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
+      <DatePickerComponent dptitle="Attendance Date" />
       <br />
-      <div style={{ height: 400, width: "95%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-      </div>
+
+      <DataGridComponent rows={rows} columns={columns} />
     </>
   );
 };

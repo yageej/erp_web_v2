@@ -1,17 +1,27 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import DataGridComponent from "./DataGridComponent";
+import { Button } from "@mui/material";
+import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 
-const Survey = () => {
+const Survey = (props) => {
+  const renderActionButton = (p) => {
+    return (
+      <Button variant="outlined">
+        <DriveFileRenameOutlineTwoToneIcon fontSize="small" />
+      </Button>
+    );
+  };
   const columns = [
-    { field: "surveytitle", headerName: "Survey Title", width: 200 },
-    { field: "enddate", headerName: "End Date", width: 130 },
-    { field: "status", headerName: "Status", width: 130 },
-
+    { field: "surveytitle", headerName: "Survey Title", width: 300 },
+    { field: "enddate", headerName: "End Date", width: 330 },
+    { field: "status", headerName: "Status", width: 330 },
     {
-      field: "Action",
+      field: "",
       headerName: "Action",
-      //   type: "number",
-      width: 90,
+      width: 100,
+      // valueGetter: actionModify,
+      renderCell: renderActionButton,
     },
   ];
 
@@ -21,25 +31,34 @@ const Survey = () => {
       surveytitle: "Survey sample",
 
       enddate: "2024-06-11",
+      status: "Active",
+    },
+    {
+      id: 3,
+      surveytitle: "Survey sample",
+
+      enddate: "2024-06-11",
+      status: "Expired",
+    },
+    {
+      id: 4,
+      surveytitle: "Survey sample",
+
+      enddate: "2024-06-11",
+      status: "Active",
+    },
+    {
+      id: 5,
+      surveytitle: "Survey sample",
+
+      enddate: "2024-06-11",
       status: "Expired",
     },
   ];
   return (
     <div>
-      {" "}
-      <h3>Survey</h3>
-      <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 3 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-      </div>
+      <h3>{props.title}</h3>
+      <DataGridComponent rows={rows} columns={columns} />
     </div>
   );
 };

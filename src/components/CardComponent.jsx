@@ -16,33 +16,28 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import AllCourses from "./AllCourses";
 import MyCourseLogo from "../assets/courselogo.jpg";
-import CardComponent from "./CardComponent";
 
-const FavoriteCourses = () => {
-  const courseDetails = [
-    {
-      coursetitle: "React Course",
-      coursedescription: "This is a sample course for React on Favorites tab",
-    },
-    {
-      coursetitle: "Javascript Course",
-      coursedescription:
-        "This is a sample course for Javascript on Favorites tab",
-    },
-  ];
+const CardComponent = (props) => {
+  const { coursetitle, coursedescription, key } = props;
   return (
     <>
-      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-        {courseDetails.map((c, key) => (
-          <CardComponent
-            coursetitle={c.coursetitle}
-            coursedescription={c.coursedescription}
-            key={key}
-          />
-        ))}
-      </Box>
+      <Card sx={{ maxWidth: 345, margin: 4 }} key={key}>
+        <CardMedia component="img" alt="" height="140" image={MyCourseLogo} />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {coursetitle}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {coursedescription}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">View Course</Button>
+          <Button size="small">Remove from Favorites</Button>
+        </CardActions>
+      </Card>
     </>
   );
 };
 
-export default FavoriteCourses;
+export default CardComponent;

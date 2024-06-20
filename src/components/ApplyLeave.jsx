@@ -13,6 +13,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
+import DatePickerComponent from "./DatePickerComponent";
 
 const ApplyLeave = () => {
   // This is for Apply Leave Drawer
@@ -65,6 +66,10 @@ const ApplyLeave = () => {
               />
             </DemoContainer>
           </LocalizationProvider>
+
+          <DatePickerComponent dptitle="Start Date" />
+          <DatePickerComponent dptitle="End Date" />
+
           <br />
           <TextField
             id="outlined-basic"

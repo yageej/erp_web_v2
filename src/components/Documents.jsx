@@ -1,7 +1,18 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import DataGridComponent from "./DataGridComponent";
+import { Button } from "@mui/material";
+import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 
-const Documents = () => {
+const Documents = (props) => {
+  const renderActionButton = (p) => {
+    return (
+      <Button variant="outlined">
+        <DriveFileRenameOutlineTwoToneIcon fontSize="small" />
+      </Button>
+    );
+  };
+  const { title } = props;
   const columns = [
     { field: "title", headerName: "Title", width: 200 },
     { field: "department", headerName: "Department", width: 130 },
@@ -12,10 +23,11 @@ const Documents = () => {
     { field: "recorddate", headerName: "Record Date", width: 130 },
 
     {
-      field: "Action",
+      field: "",
       headerName: "Action",
-      //   type: "number",
-      width: 90,
+      width: 100,
+      // valueGetter: actionModify,
+      renderCell: renderActionButton,
     },
   ];
 
@@ -30,22 +42,92 @@ const Documents = () => {
       dateofsign: "2024-06-11",
       recorddate: "2024-06-01",
     },
+    {
+      id: 3,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 4,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 5,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 6,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 7,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 8,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 9,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
+    {
+      id: 10,
+      title: "Govt ID",
+      department: "IT",
+      type: "PVC Card",
+      category: "Company ID",
+      subcategory: "Company ID",
+      dateofsign: "2024-06-11",
+      recorddate: "2024-06-01",
+    },
   ];
+
   return (
     <>
-      <h3>Documents</h3>
-      <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 3 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-      </div>
+      <h3>{title}</h3>
+      <DataGridComponent rows={rows} columns={columns} />
     </>
   );
 };

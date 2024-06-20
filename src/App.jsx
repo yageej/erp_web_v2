@@ -23,23 +23,32 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Attendance />}></Route>
-          <Route path="/Home" element={<Attendance />}></Route>
-          <Route path="/Tasks" element={<Tasks />}></Route>
-          <Route path="/Tasks/Addtaskform" element={<AddTaskForm />}></Route>
-          <Route path="/Documents" element={<Documents />}></Route>
+          <Route
+            path="/Home"
+            element={<Attendance title="Attendance" />}
+          ></Route>
+          <Route path="/Tasks" element={<Tasks title="Tasks" />}></Route>
+          <Route
+            path="/Tasks/Addtaskform"
+            element={<AddTaskForm title="Add Task Form" />}
+          ></Route>
+          <Route
+            path="/Documents"
+            element={<Documents title="Documents" />}
+          ></Route>
           <Route
             path="/Attendance&Roster"
-            element={<AttendanceandRoster />}
+            element={<AttendanceandRoster title="Attendance & PTO" />}
           ></Route>
           <Route
             path="/Course&Training"
-            element={<CourseandTraining />}
+            element={<CourseandTraining title="Courses" />}
           ></Route>{" "}
           <Route
             path="/Course&Training/View-Course"
             element={<ViewCourse />}
           ></Route>
-          <Route path="/Survey" element={<Survey />}></Route>
+          <Route path="/Survey" element={<Survey title="Survey" />}></Route>
           <Route path="/MyProfile" element={<MyProfile />}></Route>
           <Route path="/IncidentReport" element={<IncidentReport />}></Route>
           <Route path="/Termination" element={<Termination />}></Route>

@@ -118,12 +118,12 @@ const PersonalDetails = () => {
               </Button>
               <h4>Personal Info</h4>{" "}
               <Box sx={{ bgcolor: "paper", color: "Divider", padding: 3 }}>
-                <Box sx={{ display: "flex", flexWrap: "wrap", width: 1000 }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", width: 750 }}>
                   <br />
                   <TextField
                     label="First Name"
                     disabled
-                    sx={{ margin: 1, width: 330 }}
+                    sx={{ margin: 1, width: 300 }}
                   />
                   <TextField
                     label="Middle Name"
@@ -137,7 +137,7 @@ const PersonalDetails = () => {
                   />
                 </Box>
                 <br />
-                <Box sx={{ display: "flex", flexWrap: "wrap", width: 1000 }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", width: 900 }}>
                   <FormControl>
                     <InputLabel id="demo-simple-select-label">
                       Gender
@@ -148,7 +148,7 @@ const PersonalDetails = () => {
                       label="Leave Type"
                       value={gender}
                       onChange={handleChange2}
-                      sx={{ width: 250, margin: 1 }}
+                      sx={{ width: 200, margin: 1 }}
                     >
                       <MenuItem value=" Male">Male</MenuItem>
                       <MenuItem value=" Female">Female</MenuItem>
@@ -165,7 +165,7 @@ const PersonalDetails = () => {
                       label="Blood Type"
                       value={bloodtype}
                       onChange={handleChange3}
-                      sx={{ width: 250, margin: 1 }}
+                      sx={{ width: 200, margin: 1 }}
                     >
                       <MenuItem value="A">A</MenuItem>
                       <MenuItem value="AB">AB</MenuItem>
@@ -183,7 +183,7 @@ const PersonalDetails = () => {
                       label="Civil Status"
                       value={civilstatus}
                       onChange={handleChange4}
-                      sx={{ width: 250, margin: 1 }}
+                      sx={{ width: 200, margin: 1 }}
                     >
                       <MenuItem value="Single ">Single</MenuItem>
                       <MenuItem value="Married ">Married</MenuItem>

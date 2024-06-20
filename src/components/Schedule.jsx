@@ -6,6 +6,8 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import DataGridComponent from "./DataGridComponent";
+import DatePickerComponent from "./DatePickerComponent";
 
 const Schedule = () => {
   const columns = [
@@ -28,33 +30,9 @@ const Schedule = () => {
   ];
   return (
     <>
-      {" "}
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer
-          components={["DatePicker"]}
-          sx={{
-            "& > :not(style)": { m: 1, width: "10ch" },
-          }}
-        >
-          <DatePicker
-            label="Schedule Date"
-            slotProps={{ textField: { size: "small" } }}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
+      <DatePickerComponent dptitle="Schedule Date" />
       <br />
-      <div style={{ height: 400, width: "95%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-      </div>
+      <DataGridComponent rows={rows} columns={columns} />
     </>
   );
 };

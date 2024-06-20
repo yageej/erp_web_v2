@@ -16,31 +16,31 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import AllCourses from "./AllCourses";
 import MyCourseLogo from "../assets/courselogo.jpg";
+import CardComponent from "./CardComponent";
 
 const CompletedCourses = () => {
+  const courseDetails = [
+    {
+      coursetitle: "React Course",
+      coursedescription: "This is a sample course for React on Completed tab",
+    },
+    {
+      coursetitle: "Javascript Course",
+      coursedescription:
+        "This is a sample course for Javascript on Completed tab",
+    },
+  ];
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="140"
-          image={MyCourseLogo}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            React Course
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            This is a sample completed course in React
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" disabled>
-            View Course
-          </Button>
-        </CardActions>
-      </Card>
+      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+        {courseDetails.map((c, key) => (
+          <CardComponent
+            coursetitle={c.coursetitle}
+            coursedescription={c.coursedescription}
+            key={key}
+          />
+        ))}
+      </Box>
     </>
   );
 };

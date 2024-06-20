@@ -98,16 +98,16 @@ const AttendanceandRoster = () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <TimeSheet />
+            <TimeSheet title="Time Card" />
           </TabPanel>
           <TabPanel value="2">
-            <AMR />
+            <AMR title="AMR Logs" />
           </TabPanel>
           <TabPanel value="3">
-            <Schedule />
+            <Schedule title="Schedule" />
           </TabPanel>
           <TabPanel value="4">
-            <HolidayList />
+            <HolidayList title="Holidays" />
           </TabPanel>
         </TabContext>
       </Box>

@@ -6,8 +6,10 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import DataGridComponent from "./DataGridComponent";
 
-const HolidayList = () => {
+const HolidayList = (props) => {
+  const { title } = props;
   const columns = [
     { field: "date", headerName: "Date", width: 160 },
     { field: "holidayname", headerName: "Holiday Name", width: 140 },
@@ -25,19 +27,9 @@ const HolidayList = () => {
   ];
   return (
     <>
-      <h5> Holidays</h5>
-      <div style={{ height: 330, width: "95%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-      </div>
+      <h5> {title}</h5>
+
+      <DataGridComponent rows={rows} columns={columns} />
     </>
   );
 };
