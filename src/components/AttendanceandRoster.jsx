@@ -91,10 +91,38 @@ const AttendanceandRoster = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Time Card" value="1" />
-              <Tab label="AMR Logs" value="2" />
-              <Tab label="Schedule" value="3" />
-              <Tab label="Holiday List" value="4" />
+              <Tab
+                label={
+                  <span>
+                    <strong>Time Card</strong>
+                  </span>
+                }
+                value="1"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>AMR Logs</strong>
+                  </span>
+                }
+                value="2"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Schedule</strong>
+                  </span>
+                }
+                value="3"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Holiday List</strong>
+                  </span>
+                }
+                value="4"
+              />
             </TabList>
           </Box>
           <TabPanel value="1">

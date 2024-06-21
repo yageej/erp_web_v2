@@ -16,6 +16,7 @@ import Resignation from "./components/Resignation";
 import ReturnToWorkOrder from "./components/ReturnToWorkOrder";
 import AddTaskForm from "./components/AddTaskForm";
 import ViewCourse from "./components/ViewCourse";
+import CreateTask from "./components/CreateTask";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           ></Route>
           <Route path="/Tasks" element={<Tasks title="Tasks" />}></Route>
           <Route
-            path="/Tasks/Addtaskform"
+            path="/Tasks/AddTaskForm"
             element={<AddTaskForm title="Add Task Form" />}
           ></Route>
           <Route

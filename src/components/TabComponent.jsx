@@ -7,15 +7,37 @@ import TabPanel from "@mui/lab/TabPanel";
 import DataGridComponent from "./DataGridComponent";
 
 const TabComponent = (props) => {
-  const { value, handleChange, teamrows, rows, mycolumns, teamcolumns } = props;
+  const {
+    value,
+    handleChange,
+    teamrows,
+    rows,
+    mycolumns,
+    teamcolumns,
+    children,
+  } = props;
 
   return (
     <>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="My Task" value="1" />
-            <Tab label="Team Task" value="2" />
+            <Tab
+              label={
+                <span>
+                  <strong>My Task</strong>
+                </span>
+              }
+              value="1"
+            />
+            <Tab
+              label={
+                <span>
+                  <strong>Team Task</strong>
+                </span>
+              }
+              value="2"
+            />
           </TabList>
         </Box>
         <TabPanel value="1">

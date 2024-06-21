@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
@@ -14,19 +14,59 @@ import { Link } from "react-router-dom";
 
 const AddTaskForm = (props) => {
   const { title } = props;
-  const [task, setTask] = React.useState("");
-  const [task2, setTask2] = React.useState("");
-  const [task3, setTask3] = React.useState("");
 
-  const handleChange = (event) => {
-    setTask(event.target.value);
-  };
-  const handleChange2 = (event) => {
-    setTask2(event.target.value);
-  };
-  const handleChange3 = (event) => {
-    setTask3(event.target.value);
-  };
+  const [tasks, setTasks] = useState(["Sample Task 1"]);
+  const [newTask, setNewTask] = useState("");
+
+  const [taskType, setTaskType] = useState("");
+  const [startdate, setStartdate] = useState("");
+  const [enddate, setEnddate] = useState("");
+  const [priority, setPriority] = useState("");
+  const [assignto, setAssignto] = useState("");
+  const [description, setDescription] = useState("");
+
+  function handleInputChange(e) {
+    setNewTask(e.target.value);
+  }
+  function addTask() {
+    setTasks((t) => [...tasks, newTask]);
+    setNewTask("");
+
+    const taskList = [
+      {
+        taskname: tasks,
+        taskType: taskType,
+        startdate: startdate,
+        enddate: enddate,
+        prio: priority,
+        assignnee: assignto,
+        description: description,
+      },
+    ];
+
+    console.log(taskList);
+  }
+  function deleteTask(index) {}
+
+  function handleTaskTypeChange(e) {
+    setTaskType(e.target.value);
+  }
+  function handleStartDate(e) {
+    setStartdate(e.target.value);
+  }
+
+  function handleEndDate(e) {
+    setEnddate(e.target.value);
+  }
+  function handlePriority(e) {
+    setPriority(e.target.value);
+  }
+  function handleAssignnee(e) {
+    setAssignto(e.target.value);
+  }
+  function handleDescription(e) {
+    setDescription(e.target.value);
+  }
   return (
     <>
       <h3>{title}</h3>
@@ -39,15 +79,21 @@ const AddTaskForm = (props) => {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="Task Name" variant="outlined" />
+        <TextField
+          id="outlined-basic"
+          label="Task Name"
+          variant="outlined"
+          onChange={handleInputChange}
+          value={newTask}
+        />
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Task Type</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={task}
             label="Task Type"
-            onChange={handleChange}
+            value={taskType}
+            onChange={handleTaskTypeChange}
           >
             <MenuItem value={10}>..</MenuItem>
 
@@ -64,8 +110,16 @@ const AddTaskForm = (props) => {
               "& > :not(style)": { m: 1, width: "50ch" },
             }}
           >
-            <DatePicker label="Start Date" />
-            <DatePicker label="End Date" />
+            <DatePicker
+              label="Start Date"
+              // value={startdate}
+              // onChange={handleStartDate}
+            />
+            <DatePicker
+              label="End Date"
+              // value={enddate}
+              // onChange={handleEndDate}
+            />
           </DemoContainer>
         </LocalizationProvider>
 
@@ -74,9 +128,9 @@ const AddTaskForm = (props) => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={task2}
+            value={priority}
             label="Task Type"
-            onChange={handleChange2}
+            onChange={handlePriority}
           >
             <MenuItem value="Low">Low</MenuItem>
             <MenuItem value="Medium">Medium </MenuItem>
@@ -90,9 +144,9 @@ const AddTaskForm = (props) => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={task3}
+            value={assignto}
             label="Task Type"
-            onChange={handleChange3}
+            onChange={handleAssignnee}
           >
             <MenuItem value="..">..</MenuItem>
 
@@ -108,13 +162,18 @@ const AddTaskForm = (props) => {
           multiline
           rows={4}
           maxRows={6}
+          onChange={handleDescription}
         />
 
         <Box sx={{ float: "center" }}>
           <Link to="/Tasks">
             <Button variant="outlined">Cancel</Button> &nbsp;
           </Link>
-          <Button variant="contained">Add Task</Button>
+          <Link to={"/Tasks"}>
+            <Button variant="contained" onClick={addTask}>
+              Add Task
+            </Button>
+          </Link>
         </Box>
       </Box>
     </>

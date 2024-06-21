@@ -27,7 +27,7 @@ const HolidayList = (props) => {
   ];
   return (
     <>
-      <h5> {title}</h5>
+      <h2> {title}</h2>
 
       <DataGridComponent rows={rows} columns={columns} />
     </>

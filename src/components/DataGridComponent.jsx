@@ -2,13 +2,12 @@
 
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-
 const DataGridComponent = (props) => {
   const { rows, columns } = props;
 
   return (
     <>
-      <div style={{ height: "400", width: "100%" }}>
+      <div style={{ height: "500", width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}

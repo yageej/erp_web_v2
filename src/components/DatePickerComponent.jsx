@@ -11,7 +11,7 @@ const DatePickerComponent = (props) => {
         <DemoContainer
           components={["DatePicker"]}
           sx={{
-            "& > :not(style)": { m: 1, width: "10ch" },
+            "& > :not(style)": { width: "10ch" },
           }}
         >
           <DatePicker

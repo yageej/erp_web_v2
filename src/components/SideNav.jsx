@@ -55,17 +55,15 @@ import PersonOffTwoToneIcon from "@mui/icons-material/PersonOffTwoTone";
 import AssuredWorkloadTwoToneIcon from "@mui/icons-material/AssuredWorkloadTwoTone";
 import PeopleTwoToneIcon from "@mui/icons-material/PeopleTwoTone";
 import LanguageTwoToneIcon from "@mui/icons-material/LanguageTwoTone";
+import NotificationsActiveTwoToneIcon from "@mui/icons-material/NotificationsActiveTwoTone";
 
 const SideNav = (props) => {
   const [openList, setOpenList] = React.useState(false);
   const [openList1, setOpenList1] = React.useState(false);
 
-  const [selectedItem, setSelectedItem] = React.useState(false);
-
   const handleClick = () => {
     setOpenList(!openList);
     setOpen(true);
-    setSelectedItem(true);
   };
   const handleClick2 = () => {
     setOpenList1(!openList1);
@@ -215,12 +213,15 @@ const SideNav = (props) => {
                 <ListIcon />
               </IconButton>
               <Typography variant="h5" noWrap component="div">
-                ERP <LanguageTwoToneIcon />
+                ERP <LanguageTwoToneIcon />{" "}
+                <IconButton sx={{ marginLeft: 201 }}>
+                  <NotificationsActiveTwoToneIcon />
+                </IconButton>
               </Typography>
             </Toolbar>
           </AppBar>
           <Drawer variant="permanent" open={open}>
-            <DrawerHeader>
+            <DrawerHeader sx={{ bgcolor: "#F6F5F2", color: "black" }}>
               <IconButton onClick={handleDrawerClose}>
                 <Brightness5TwoToneIcon /> &nbsp; BEEPO 2.0
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -236,6 +237,9 @@ const SideNav = (props) => {
               sx={{
                 width: "100%",
                 maxWidth: 500,
+                height: "100%",
+                bgcolor: "#F6F5F2",
+                color: "black",
               }}
               component="nav"
               aria-labelledby="nested-list-subheader"
@@ -253,6 +257,8 @@ const SideNav = (props) => {
                 {openList ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={openList} timeout="auto" unmountOnExit>
+                <Divider />
+
                 <List component="div" disablePadding>
                   <Link
                     style={{ textDecoration: "none", color: "inherit" }}
@@ -285,7 +291,7 @@ const SideNav = (props) => {
                     style={{ textDecoration: "none", color: "inherit" }}
                     to="/Documents"
                   >
-                    <ListItemButton sx={{ pl: 4 }} selected={selectedItem}>
+                    <ListItemButton sx={{ pl: 4 }}>
                       <ListItemIcon>
                         <TopicTwoToneIcon />
                       </ListItemIcon>

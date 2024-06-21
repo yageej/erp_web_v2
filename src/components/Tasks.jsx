@@ -1,5 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import DataGridComponent from "./DataGridComponent";
 
 import AddTaskTwoToneIcon from "@mui/icons-material/AddTaskTwoTone";
 import { Link } from "react-router-dom";
@@ -110,20 +116,49 @@ const Tasks = (props) => {
       <h3>{title}</h3>
       <Box sx={{ width: "100%", typography: "body1" }}>
         <div>
-          <Link to="/Tasks/Addtaskform">
+          <Link to="/Tasks/AddTaskForm">
             <Button sx={{ float: "right", fontSize: 16 }} variant="outlined">
               New Task&nbsp; <AddTaskTwoToneIcon />
             </Button>
           </Link>
         </div>
-        <TabComponent
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab
+                label={
+                  <span>
+                    <strong>My Task</strong>
+                  </span>
+                }
+                value="1"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Team Task</strong>
+                  </span>
+                }
+                value="2"
+              />
+            </TabList>
+          </Box>
+          <TabPanel value="1">
+            <DataGridComponent rows={rows} columns={mycolumns} />
+          </TabPanel>
+          <TabPanel value="2">
+            <DataGridComponent rows={teamrows} columns={teamcolumns} />
+          </TabPanel>
+        </TabContext>
+        {/* <TabComponent
           value={value}
           handleChange={handleChange}
           teamrows={teamrows}
           rows={rows}
           teamcolumns={teamcolumns}
           mycolumns={mycolumns}
-        />
+          children={props.children}
+        /> */}
       </Box>
     </>
   );

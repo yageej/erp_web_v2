@@ -26,14 +26,63 @@ const MyProfile = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Personal Details" value="1" />
-              <Tab label="Documents" value="2" />
-              <Tab label="Professional Details" value="3" />
+              <Tab
+                label={
+                  <span>
+                    <strong>Personal Details</strong>
+                  </span>
+                }
+                value="1"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Documents</strong>
+                  </span>
+                }
+                value="2"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Professional Details</strong>
+                  </span>
+                }
+                value="3"
+              />
 
-              <Tab label="Statutory Details" value="4" />
-              <Tab label="HMO Details" value="5" />
-              <Tab label="Salary Details" value="6" />
-              <Tab label="Employee History" value="7" />
+              <Tab
+                label={
+                  <span>
+                    <strong>Statutory Details</strong>
+                  </span>
+                }
+                value="4"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>HMO Details</strong>
+                  </span>
+                }
+                value="5"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Salary Details</strong>
+                  </span>
+                }
+                value="6"
+              />
+              <Tab
+                label={
+                  <span>
+                    <strong>Employee History</strong>
+                  </span>
+                }
+                value="7"
+              />
             </TabList>
           </Box>
           <TabPanel value="1">
