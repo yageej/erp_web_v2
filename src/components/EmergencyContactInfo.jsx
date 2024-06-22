@@ -22,7 +22,17 @@ import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
 
+import SelectFieldComponent from "./SelectFieldComponent";
+import InputFieldComponent from "./InputFieldComponent";
+
 const EmergencyContactInfo = (props) => {
+  const inputFields = ["Contact Name", "Contact Number"];
+  const selectFields = [
+    {
+      "Contact Relation": ["Parent", "Guardian"],
+    },
+  ];
+
   const { title } = props;
   const animationClass = FadeRight();
   // This is for select options element
@@ -43,73 +53,84 @@ const EmergencyContactInfo = (props) => {
   const handleChange4 = (event) => {
     setCivilstatus(event.target.value);
   };
+
+  const selectMenuValues = [
+    {
+      id: 0,
+      inputlabel: "Contact Relation",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Guardian", "Parent", "Sibling"],
+    },
+  ];
+
+  const inputFieldProps = [
+    {
+      id: 0,
+      label: "Contact Name",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 1,
+      label: "Contact Number",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: false,
+    },
+    {
+      id: 2,
+      label: "Land Line Number",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 3,
+      label: "Emergency Contact Address",
+      value: "",
+      placeholder: "",
+      rows: "4",
+      isDisabled: true,
+    },
+  ];
   return (
     <>
       <div className={animationClass}>
         <h4>{title}</h4>
-        <Box sx={{ width: 800, margin: 3 }}>
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Contact name
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Contact Number
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Land Line Number
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />{" "}
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Address
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            placeholder="Enter Emergency Contact Address here.."
-            multiline
-            rows={4}
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Contact Relation
-          </InputLabel>
-          <Select
-            size="small"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Civil Status"
-            value={civilstatus}
-            onChange={handleChange4}
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          >
-            <MenuItem value="Parent ">Parent</MenuItem>
-            <MenuItem value="Guardian ">Guardian</MenuItem>
-            <MenuItem value="Sibling ">Sibling</MenuItem>
-          </Select>
-          <Button sx={{ marginLeft: 4, marginTop: 1 }} variant="outlined">
+        <Box sx={{ width: "40rem", margin: 3 }}>
+          {inputFieldProps.map((inpf, key) => (
+            <InputFieldComponent
+              label={inpf.label}
+              pl={inpf.placeholder}
+              rows={inpf.rows}
+              value={inpf.value}
+              key={key}
+              disabled={inpf.isDisabled}
+            />
+          ))}
+
+          {selectMenuValues.map((s, key) => (
+            <SelectFieldComponent
+              il={s.inputlabel}
+              val={s.value}
+              oc={s.onChange}
+              menu={s.menuitem}
+            />
+          ))}
+
+          <Button sx={{ marginTop: 2, float: "right" }} variant="outlined">
             Update
           </Button>
+          {/* 
+        inputlable: "Contact Relation",
+      value: "",
+      onChange: "",
+      menuitem: ["Parent", "Guardian", "Sibling"], */}
         </Box>
       </div>
     </>

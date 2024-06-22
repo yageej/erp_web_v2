@@ -27,6 +27,7 @@ import ContactInfo from "./ContactInfo";
 import EmergencyContactInfo from "./EmergencyContactInfo";
 import CompanyInfo from "./CompanyInfo";
 import EmployeeDetailsInfo from "./EmployeeDetailsInfo";
+import { Diversity1Outlined } from "@mui/icons-material";
 
 const PersonalDetails = (props) => {
   const animationClass1 = AnimationPerRoute();
@@ -45,7 +46,7 @@ const PersonalDetails = (props) => {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            <Box>{children}</Box>
           </Box>
         )}
       </div>
@@ -74,7 +75,7 @@ const PersonalDetails = (props) => {
     <div className={animationClass1}>
       <Box>
         <Grid container>
-          <Grid item sx={6}>
+          <Grid item xs={2}>
             <Box
               sx={{
                 flexGrow: 1,
@@ -103,45 +104,45 @@ const PersonalDetails = (props) => {
               </Tabs>
             </Box>
           </Grid>
-          <Grid item sx={6}>
+          <Grid item xs={8}>
             <TabPanel value={value} index={0}>
               <Button sx={{ float: "right", fontSize: 19 }}>
                 <DriveFileRenameOutlineTwoToneIcon />
               </Button>
-              <div className={animationClass2}>
+              <span className={animationClass2}>
                 <PersonalInfo title="Personal Information" />
-              </div>
+              </span>
             </TabPanel>
             <TabPanel value={value} index={1}>
               <Button sx={{ float: "right", fontSize: 19 }}>
                 <DriveFileRenameOutlineTwoToneIcon />
               </Button>
-              <div className={animationClass2}>
+              <span className={animationClass2}>
                 <AddressInfo title="Address Information" />
-              </div>
+              </span>
             </TabPanel>
             <TabPanel value={value} index={2}>
               <Button sx={{ float: "right", fontSize: 19 }}>
                 <DriveFileRenameOutlineTwoToneIcon />
               </Button>
-              <div className={animationClass2}>
+              <span className={animationClass2}>
                 <ContactInfo title="Contact Information" />
-              </div>
+              </span>
             </TabPanel>
             <TabPanel value={value} index={3}>
-              <div className={animationClass2}>
+              <span className={animationClass2}>
                 <EmergencyContactInfo title="Emergency Contact Information" />
-              </div>
+              </span>
             </TabPanel>
             <TabPanel value={value} index={4}>
-              <div className={animationClass2}>
+              <span className={animationClass2}>
                 <CompanyInfo title="Company Information" />
-              </div>
+              </span>
             </TabPanel>
             <TabPanel value={value} index={5}>
-              <div className={animationClass2}>
+              <span className={animationClass2}>
                 <EmployeeDetailsInfo title="Employee Details" />
-              </div>
+              </span>
             </TabPanel>
           </Grid>
         </Grid>

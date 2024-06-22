@@ -21,6 +21,8 @@ import { Link } from "react-router-dom";
 import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
+import SelectFieldComponent from "./SelectFieldComponent";
+import InputFieldComponent from "./InputFieldComponent";
 
 const AddressInfo = (props) => {
   const { title } = props;
@@ -43,83 +45,74 @@ const AddressInfo = (props) => {
   const handleChange4 = (event) => {
     setCivilstatus(event.target.value);
   };
+
+  const selectMenuValues = [
+    {
+      id: 2,
+      inputlabel: "Province",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Province 1", "Province 2", "Province 3"],
+    },
+    {
+      id: 1,
+      inputlabel: "City",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["City A", " City B", " City C", "City D"],
+    },
+    {
+      id: 0,
+      inputlabel: "Barangay",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Barangay 1", "Barangay 2", "Barangay 3"],
+    },
+  ];
+
+  const inputFieldProps = [
+    {
+      id: 0,
+      label: "Address",
+      value: "",
+      placeholder: "Enter your Permanent Address here...",
+      rows: "4",
+      isDisabled: true,
+    },
+    {
+      id: 1,
+      label: "Zip Code",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+  ];
   return (
     <div className={animationClass}>
       <h4>{title}</h4>
 
-      <Box sx={{ width: 800, margin: 3 }}>
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Address
-        </InputLabel>
+      <Box sx={{ width: "40rem", margin: 3 }}>
+        {inputFieldProps.map((inpf, key) => (
+          <InputFieldComponent
+            label={inpf.label}
+            pl={inpf.placeholder}
+            rows={inpf.rows}
+            value={inpf.value}
+            key={key}
+            disabled={inpf.isDisabled}
+          />
+        ))}
 
-        <TextField
-          labelId="demo-simple-select-label"
-          variant="outlined"
-          multiline
-          rows={4}
-          fullWidth
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          placeholder="Enter your address..."
-        />
-
-        <InputLabel id="province-label" sx={{ marginTop: 1 }}>
-          Province
-        </InputLabel>
-        <Select
-          size="small"
-          labelId="province-label"
-          id="demo-simple-select"
-          value={civilstatus}
-          onChange={handleChange4}
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          fullWidth
-        >
-          <MenuItem value="Single ">Province 1</MenuItem>
-        </Select>
-
-        <InputLabel id="city-label" sx={{ marginTop: 1 }}>
-          City
-        </InputLabel>
-        <Select
-          size="small"
-          labelId="city-label"
-          id="demo-simple-select"
-          value={civilstatus}
-          onChange={handleChange4}
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          fullWidth
-        >
-          <MenuItem value="Single ">City 1</MenuItem>
-        </Select>
-
-        <InputLabel id="Barangay-label" sx={{ marginTop: 1 }}>
-          Barangay
-        </InputLabel>
-        <Select
-          size="small"
-          labelId="Barangay-label"
-          id="demo-simple-select"
-          value={civilstatus}
-          onChange={handleChange4}
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          fullWidth
-        >
-          <MenuItem value="Single ">Barangay 1</MenuItem>
-        </Select>
-        <InputLabel id="zip-label" sx={{ marginTop: 1 }}>
-          Zip Code
-        </InputLabel>
-
-        <TextField
-          labelId="zip-label"
-          variant="outlined"
-          fullWidth
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-
-        <Button sx={{ marginLeft: 4, marginTop: 1 }} variant="outlined">
+        {selectMenuValues.map((s, key) => (
+          <SelectFieldComponent
+            il={s.inputlabel}
+            val={s.value}
+            oc={s.onChange}
+            menu={s.menuitem}
+          />
+        ))}
+        <Button sx={{ marginTop: 2, float: "right" }} variant="outlined">
           Update
         </Button>
       </Box>

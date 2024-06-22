@@ -22,6 +22,8 @@ import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
 import DatePickerComponent from "./DatePickerComponent";
+import SelectFieldComponent from "./SelectFieldComponent";
+import InputFieldComponent from "./InputFieldComponent";
 
 const PersonalInfo = (props) => {
   const { title } = props;
@@ -44,104 +46,101 @@ const PersonalInfo = (props) => {
   const handleChange4 = (event) => {
     setCivilstatus(event.target.value);
   };
+
+  const selectMenuValues = [
+    {
+      id: 0,
+      inputlabel: "Gender",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Male", "Female", "Prefer Not To Say"],
+    },
+    {
+      id: 2,
+      inputlabel: "Blood Type",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["A", "B", "AB", "O"],
+    },
+    {
+      id: 3,
+      inputlabel: "Civil Status",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Single", "Married", "Widowed"],
+    },
+  ];
+
+  const inputFieldProps = [
+    {
+      id: 0,
+      label: "First Name",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 1,
+      label: "Middle Name",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: false,
+    },
+    {
+      id: 2,
+      label: "Last Name",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 3,
+      label: "Suffix",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+  ];
   return (
     <>
       <h4>{title}</h4>
 
-      <Box sx={{ width: 800, marginleft: 5, margin: 3 }}>
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          First Name
-        </InputLabel>
-        <TextField
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Middle Name
-        </InputLabel>
-        <TextField
-          size="small"
-          disabled
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Last Name
-        </InputLabel>
-        <TextField
-          size="small"
-          disabled
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Suffix
-        </InputLabel>
-        <TextField
-          size="small"
-          disabled
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Date of Birth
-        </InputLabel>
+      <Box sx={{ width: "40rem", margin: 3 }}>
+        {inputFieldProps.map((inpf, key) => (
+          <InputFieldComponent
+            label={inpf.label}
+            pl={inpf.placeholder}
+            rows={inpf.rows}
+            value={inpf.value}
+            disabled={inpf.isDisabled}
+            key={key}
+          />
+        ))}
 
-        <Box sx={{ width: 600, marginTop: 1, marginLeft: 2 }}>
+        <Box sx={{ marginTop: 1 }}>
           <DatePickerComponent dptitle="Date of Birth" />
         </Box>
+        {selectMenuValues.map((s, key) => (
+          <SelectFieldComponent
+            il={s.inputlabel}
+            val={s.value}
+            oc={s.onChange}
+            menu={s.menuitem}
+          />
+        ))}
 
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Gender
-        </InputLabel>
-        <Select
-          size="small"
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Leave Type"
-          value={gender}
-          onChange={handleChange2}
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        >
-          <MenuItem value=" Male">Male</MenuItem>
-          <MenuItem value=" Female">Female</MenuItem>
-        </Select>
-
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Blood Type
-        </InputLabel>
-        <Select
-          size="small"
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Blood Type"
-          value={bloodtype}
-          onChange={handleChange1}
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        >
-          <MenuItem value="A">A</MenuItem>
-          <MenuItem value="AB">AB</MenuItem>
-          <MenuItem value="C">C</MenuItem>
-        </Select>
-
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Civil Status
-        </InputLabel>
-        <Select
-          size="small"
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Civil Status"
-          value={civilstatus}
-          onChange={handleChange4}
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        >
-          <MenuItem value="Single ">Single</MenuItem>
-          <MenuItem value="Married ">Married</MenuItem>
-          <MenuItem value="Widowed ">Widowed</MenuItem>
-          <MenuItem value="Separated ">Separated</MenuItem>
-        </Select>
-
-        <Button sx={{ marginLeft: 4, marginTop: 1 }} variant="outlined">
+        <Button sx={{ marginTop: 2, float: "right" }} variant="outlined">
           Update
         </Button>
+        {/* 
+        inputlable: "Contact Relation",
+      value: "",
+      onChange: "",
+      menuitem: ["Parent", "Guardian", "Sibling"], */}
       </Box>
     </>
   );

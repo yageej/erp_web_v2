@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
+import InputFieldComponent from "./InputFieldComponent";
 
 const ContactInfo = (props) => {
   const { title } = props;
@@ -43,51 +44,58 @@ const ContactInfo = (props) => {
   const handleChange4 = (event) => {
     setCivilstatus(event.target.value);
   };
+
+  const inputFieldProps = [
+    {
+      id: 0,
+      label: "Land Line Number",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 1,
+      label: "Personal Email",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: false,
+    },
+    {
+      id: 2,
+      label: "Mobile Number 1",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 3,
+      label: "Mobile Number 2",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+  ];
   return (
     <div className={animationClass}>
       <h4>{title}</h4>
-      <Box sx={{ width: 800, margin: 3 }}>
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Land Line Number
-        </InputLabel>
-        <TextField
-          labelId="demo-simple-select-label"
-          variant="outlined"
-          fullWidth
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Personal Email
-        </InputLabel>
-        <TextField
-          labelId="demo-simple-select-label"
-          variant="outlined"
-          fullWidth
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Mobile Number 1
-        </InputLabel>
-        <TextField
-          labelId="demo-simple-select-label"
-          variant="outlined"
-          fullWidth
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />{" "}
-        <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-          Mobile Number 2
-        </InputLabel>
-        <TextField
-          labelId="demo-simple-select-label"
-          variant="outlined"
-          fullWidth
-          size="small"
-          sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-        />
-        <Button sx={{ marginLeft: 4, marginTop: 1 }} variant="outlined">
+
+      <Box sx={{ width: "40rem", margin: 3 }}>
+        {inputFieldProps.map((inpf, key) => (
+          <InputFieldComponent
+            label={inpf.label}
+            pl={inpf.placeholder}
+            rows={inpf.rows}
+            value={inpf.value}
+            key={key}
+            disabled={inpf.isDisabled}
+          />
+        ))}
+
+        <Button sx={{ marginTop: 2, float: "right" }} variant="outlined">
           Update
         </Button>
       </Box>

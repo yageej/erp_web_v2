@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../index.css";
 import { styled, useTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -56,8 +57,24 @@ import AssuredWorkloadTwoToneIcon from "@mui/icons-material/AssuredWorkloadTwoTo
 import PeopleTwoToneIcon from "@mui/icons-material/PeopleTwoTone";
 import LanguageTwoToneIcon from "@mui/icons-material/LanguageTwoTone";
 import NotificationsActiveTwoToneIcon from "@mui/icons-material/NotificationsActiveTwoTone";
+import FadeRight from "../FadeRight";
+import { blue } from "@mui/material/colors";
 
 const SideNav = (props) => {
+  const animationClass = FadeRight();
+  const customtheme = createTheme({
+    typography: {
+      fontSize: 11,
+    },
+  });
+
+  const boldcustomtheme = createTheme({
+    typography: {
+      fontSize: 12,
+      fontWeightBold: 700,
+    },
+  });
+
   const [openList, setOpenList] = React.useState(false);
   const [openList1, setOpenList1] = React.useState(false);
 
@@ -110,7 +127,7 @@ const SideNav = (props) => {
     setOpen(true);
   };
 
-  const drawerWidth = 290;
+  const drawerWidth = 280;
 
   const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -186,6 +203,7 @@ const SideNav = (props) => {
   };
 
   const handleDrawerClose = () => {
+    setOpenList(false);
     setOpen(false);
   };
 
@@ -197,7 +215,7 @@ const SideNav = (props) => {
           <AppBar
             position="fixed"
             open={open}
-            sx={{ bgcolor: "#3572EF", color: "white", fontWeight: "bold" }}
+            sx={{ bgcolor: "#3572EF", color: "white" }}
           >
             <Toolbar>
               <IconButton
@@ -212,334 +230,393 @@ const SideNav = (props) => {
               >
                 <ListIcon />
               </IconButton>
-              <Typography variant="h5" noWrap component="div">
-                <strong>ERP</strong> <LanguageTwoToneIcon />{" "}
-                <IconButton sx={{ marginLeft: 201 }}>
-                  <NotificationsActiveTwoToneIcon />
-                </IconButton>
-              </Typography>
+              <strong>ERP</strong> <LanguageTwoToneIcon />{" "}
+              <IconButton sx={{ marginLeft: 201 }}>
+                <NotificationsActiveTwoToneIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
-          <Drawer variant="permanent" open={open}>
-            <DrawerHeader sx={{ bgcolor: "#F6F5F2", color: "black" }}>
-              <IconButton onClick={handleDrawerClose}>
-                <Brightness5TwoToneIcon /> &nbsp; <strong>BEEPO 2.0</strong>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {theme.direction === "rtl" ? (
-                  <ChevronRightIcon />
-                ) : (
-                  <MenuOpenRoundedIcon />
-                )}
-              </IconButton>
-            </DrawerHeader>
+          <div className={animationClass}>
+            <Drawer variant="permanent" open={open}>
+              <DrawerHeader sx={{ bgcolor: "#F6F5F2", color: "black" }}>
+                <IconButton onClick={handleDrawerClose}>
+                  <Brightness5TwoToneIcon /> &nbsp; <strong>BEEPO 2.0</strong>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {theme.direction === "rtl" ? (
+                    <ChevronRightIcon />
+                  ) : (
+                    <MenuOpenRoundedIcon />
+                  )}
+                </IconButton>
+              </DrawerHeader>
 
-            <List
-              sx={{
-                width: "100%",
-                maxWidth: 500,
-                height: "100%",
-                bgcolor: "#F6F5F2",
-                color: "black",
-              }}
-              component="nav"
-              aria-labelledby="nested-list-subheader"
-              // subheader={
-              //   <ListSubheader component="div" id="nested-list-subheader">
-              //     ERP Web 2.0
-              //   </ListSubheader>
-              // }
-            >
-              <ListItemButton onClick={handleClick}>
-                <ListItemIcon>
-                  <SpaceDashboardTwoToneIcon />
-                </ListItemIcon>
-                <ListItemText className="list-item-text" primary="Dashboard" />
-                {openList ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-              <Collapse in={openList} timeout="auto" unmountOnExit>
-                <Divider />
-
-                <List component="div" disablePadding>
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Home"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <HomeTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText className="list-item-text" primary="Home" />
-                    </ListItemButton>
-                  </Link>
-
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Tasks"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <TaskTwoToneIcon />
-                      </ListItemIcon>
+              <List
+                sx={{
+                  width: "100%",
+                  maxWidth: 500,
+                  height: "100%",
+                  bgcolor: "#F6F5F2",
+                  color: "black",
+                }}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+                // subheader={
+                //   <ListSubheader component="div" id="nested-list-subheader">
+                //     ERP Web 2.0
+                //   </ListSubheader>
+                // }
+              >
+                <ThemeProvider theme={customtheme}>
+                  <ListItemButton onClick={handleClick}>
+                    <ListItemIcon>
+                      <SpaceDashboardTwoToneIcon sx={{ color: "#3572EF" }} />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
                       <ListItemText
                         className="list-item-text"
-                        primary="Tasks"
+                        primary="Dashboard"
                       />
-                    </ListItemButton>
-                  </Link>
+                    </ThemeProvider>
+                    {openList ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={openList} timeout="auto" unmountOnExit>
+                    <Divider />
+                    <List component="div" disablePadding>
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "inherit",
+                        }}
+                        to="/Home"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <HomeTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Home"
+                          />
+                        </ListItemButton>
+                      </Link>
 
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Documents"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <TopicTwoToneIcon />
-                      </ListItemIcon>
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Tasks"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <TaskTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Tasks"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Documents"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <TopicTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Documents"
+                          />
+                        </ListItemButton>
+                      </Link>
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Attendance&Roster"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <PunchClockTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Attendance & Roster"
+                          />
+                        </ListItemButton>
+                      </Link>
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Course&Training"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <ModelTrainingTwoToneIcon
+                              sx={{ color: "#3572EF" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Course/Training"
+                          />
+                        </ListItemButton>
+                      </Link>
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Survey"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <PollTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Survey"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/MyProfile"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <AccountCircleTwoToneIcon
+                              sx={{ color: "#3572EF" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="My Profile"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/IncidentReport"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <ReportProblemTwoToneIcon
+                              sx={{ color: "#3572EF" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Incident Report"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Termination"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <PersonRemoveTwoToneIcon
+                              sx={{ color: "#3572EF" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Termination"
+                          />
+                        </ListItemButton>
+                      </Link>
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/MyATDApproval"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <FactCheckTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="My ATD Approval"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/Resignation"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <PersonOffTwoToneIcon sx={{ color: "#3572EF" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Resignation"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/ReturnToWorkOrder"
+                      >
+                        <ListItemButton sx={{ pl: 5 }}>
+                          <ListItemIcon>
+                            <AssuredWorkloadTwoToneIcon
+                              sx={{ color: "#3572EF" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Return to Work Order"
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      <Divider />
+                    </List>
+                  </Collapse>
+                  <ListItemButton onClick={handleClick2}>
+                    <ListItemIcon>
+                      <PeopleTwoToneIcon />
+                    </ListItemIcon>
+
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Employee Management"
+                      />
+                    </ThemeProvider>
+                    {openList1 ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={openList1} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      <Link style={{ textDecoration: "none" }} to="/Home">
+                        <ListItemButton sx={{ pl: 4 }}>
+                          <ListItemIcon>
+                            <StarBorder />
+                          </ListItemIcon>
+                          <ListItemText
+                            className="list-item-text"
+                            primary="Home"
+                          />
+                        </ListItemButton>
+                      </Link>
+                    </List>
+                  </Collapse>
+
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Finance Management"
+                      />{" "}
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Course"
+                      />{" "}
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="HMO Management"
+                      />
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
                       <ListItemText
                         className="list-item-text"
                         primary="Documents"
                       />
-                    </ListItemButton>
-                  </Link>
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Attendance&Roster"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <PunchClockTwoToneIcon />
-                      </ListItemIcon>
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
                       <ListItemText
                         className="list-item-text"
-                        primary="Attendance & Roster"
+                        primary="Master Data"
                       />
-                    </ListItemButton>
-                  </Link>
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Course&Training"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <ModelTrainingTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="Course/Training"
-                      />
-                    </ListItemButton>
-                  </Link>
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Survey"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <PollTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="Survey"
-                      />
-                    </ListItemButton>
-                  </Link>
-
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/MyProfile"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <AccountCircleTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="My Profile"
-                      />
-                    </ListItemButton>
-                  </Link>
-
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/IncidentReport"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <ReportProblemTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="Incident Report"
-                      />
-                    </ListItemButton>
-                  </Link>
-
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Termination"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <PersonRemoveTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="Termination"
-                      />
-                    </ListItemButton>
-                  </Link>
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/MyATDApproval"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <FactCheckTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="My ATD Approval"
-                      />
-                    </ListItemButton>
-                  </Link>
-
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/Resignation"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <PersonOffTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="Resignation"
-                      />
-                    </ListItemButton>
-                  </Link>
-
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    to="/ReturnToWorkOrder"
-                  >
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <AssuredWorkloadTwoToneIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        className="list-item-text"
-                        primary="Return to Work Order"
-                      />
-                    </ListItemButton>
-                  </Link>
-
+                    </ThemeProvider>
+                  </ListItemButton>
                   <Divider />
-                </List>
-              </Collapse>
-
-              <ListItemButton onClick={handleClick2}>
-                <ListItemIcon>
-                  <PeopleTwoToneIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Employee Management"
-                />
-                {openList1 ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-              <Collapse in={openList1} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <Link style={{ textDecoration: "none" }} to="/Home">
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <StarBorder />
-                      </ListItemIcon>
-                      <ListItemText className="list-item-text" primary="Home" />
-                    </ListItemButton>
-                  </Link>
-                </List>
-              </Collapse>
-
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Finance Management"
-                />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText className="list-item-text" primary="Course" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="HMO Management"
-                />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText className="list-item-text" primary="Documents" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Master Data"
-                />
-              </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Teams Management"
+                      />
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Survey Management"
+                      />
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Client Management"
+                      />
+                    </ThemeProvider>
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HelpIcon />
+                    </ListItemIcon>
+                    <ThemeProvider theme={boldcustomtheme}>
+                      {" "}
+                      <ListItemText
+                        className="list-item-text"
+                        primary="Talent Management"
+                      />
+                    </ThemeProvider>
+                  </ListItemButton>
+                </ThemeProvider>
+              </List>
               <Divider />
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Teams Management"
-                />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Survey Management"
-                />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Client Management"
-                />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HelpIcon />
-                </ListItemIcon>
-                <ListItemText
-                  className="list-item-text"
-                  primary="Talent Management"
-                />
-              </ListItemButton>
-            </List>
-            <Divider />
 
-            {/* <List>
+              {/* <List>
             {["All mail", "Trash", "Spam"].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
@@ -563,7 +640,8 @@ const SideNav = (props) => {
               </ListItem>
             ))}
           </List> */}
-          </Drawer>
+            </Drawer>
+          </div>
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <DrawerHeader />
             <Grid container spacing={1}>

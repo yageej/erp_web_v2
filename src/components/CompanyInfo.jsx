@@ -22,6 +22,9 @@ import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
 
+import SelectFieldComponent from "./SelectFieldComponent";
+import InputFieldComponent from "./InputFieldComponent";
+
 const CompanyInfo = (props) => {
   const { title } = props;
   const animationClass = FadeRight();
@@ -43,55 +46,88 @@ const CompanyInfo = (props) => {
   const handleChange4 = (event) => {
     setCivilstatus(event.target.value);
   };
+  const selectMenuValues = [
+    {
+      id: 0,
+      inputlabel: "Gender",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Male", "Female", "Prefer Not To Say"],
+    },
+    {
+      id: 2,
+      inputlabel: "Blood Type",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["A", "B", "AB", "O"],
+    },
+    {
+      id: 3,
+      inputlabel: "Civil Status",
+      value: civilstatus,
+      onChange: handleChange4,
+      menuitem: ["Single", "Married", "Widowed"],
+    },
+  ];
+
+  const inputFieldProps = [
+    {
+      id: 0,
+      label: "Employee Code",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 1,
+      label: "Employee ID",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: false,
+    },
+    {
+      id: 2,
+      label: "Micro Resume Reference ID",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 3,
+      label: "Job Adder ID",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+  ];
   return (
     <>
       <div className={animationClass}>
         <h4>{title}</h4>
-        <Box sx={{ width: 800, margin: 3 }}>
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Employee Code
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Employee ID
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Micro Resume Reference ID
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />{" "}
-          <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Job Adder ID
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            rows={4}
-            sx={{ width: 600, marginTop: 1, marginLeft: 2 }}
-          />
-          <Button sx={{ marginLeft: 4, marginTop: 1 }} variant="outlined">
+        <Box sx={{ width: "40rem", margin: 3 }}>
+          {inputFieldProps.map((inpf, key) => (
+            <InputFieldComponent
+              label={inpf.label}
+              pl={inpf.placeholder}
+              rows={inpf.rows}
+              value={inpf.value}
+              key={key}
+              disabled={inpf.isDisabled}
+            />
+          ))}
+
+          <Button sx={{ marginTop: 2, float: "right" }} variant="outlined">
             Update
           </Button>
+          {/* 
+        inputlable: "Contact Relation",
+      value: "",
+      onChange: "",
+      menuitem: ["Parent", "Guardian", "Sibling"], */}
         </Box>
       </div>
     </>

@@ -5,9 +5,11 @@ import Footer from "./Footer";
 const Layout = (props) => {
   return (
     <>
-      <SideNav children={props.children} />
-      <hr />
-      <Footer />
+      <div>
+        <SideNav children={props.children} />
+        <hr />
+        <Footer />
+      </div>
     </>
   );
 };
