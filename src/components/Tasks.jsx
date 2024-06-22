@@ -12,8 +12,11 @@ import { Link } from "react-router-dom";
 import TabComponent from "./TabComponent";
 import { Button } from "@mui/material";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
+import AnimationPerRoute from "../AnimationPerRoute";
 
 const Tasks = (props) => {
+  const animationClass = AnimationPerRoute();
+
   const { title } = props;
   const [value, setValue] = React.useState("1");
 
@@ -112,7 +115,7 @@ const Tasks = (props) => {
     },
   ];
   return (
-    <>
+    <div className={animationClass}>
       <h3>{title}</h3>
       <Box sx={{ width: "100%", typography: "body1" }}>
         <div>
@@ -160,7 +163,7 @@ const Tasks = (props) => {
           children={props.children}
         /> */}
       </Box>
-    </>
+    </div>
   );
 };
 

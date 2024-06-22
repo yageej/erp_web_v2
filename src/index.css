@@ -1,6 +1,6 @@
-.list-item-text {
-  font-size: 90px;
-}
+/* body {
+  background-color: rgb(123, 133, 143);
+} */
 
 /* 
 
@@ -11,4 +11,48 @@
 .footer {
   font-size: 9px;
   text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeinBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.router-enter {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.router-enter2 {
+  animation-name: fadeRight;
+  animation-duration: 400ms;
+}
+
+.router-enter3 {
+  animation-name: fadeinBottom;
+  animation-duration: 400ms;
 }

@@ -25,7 +25,7 @@ const ApplyLeave = () => {
 
   return (
     <>
-      <Box sx={{ margin: 2 }}>
+      <Box sx={{ margin: 4, maxWidth: 450 }}>
         <CalendarMonthTwoToneIcon sx={{ float: "right" }} fontSize="large" />
         <h3>Submit Leave</h3>
         <h5>You have day/s remaining PTO Credits</h5>
@@ -48,27 +48,10 @@ const ApplyLeave = () => {
           </Select>
           <br />
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer
-              components={["DatePicker"]}
-              sx={{
-                "& > :not(style)": { m: 1, width: "100ch" },
-              }}
-            >
-              <DatePicker
-                label="Start Date"
-                slotProps={{ textField: { size: "small" } }}
-              />
-
-              <DatePicker
-                label="End Date"
-                slotProps={{ textField: { size: "small" } }}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
-
-          <DatePickerComponent dptitle="Start Date" />
-          <DatePickerComponent dptitle="End Date" />
+          <Box sx={{ display: "flex" }}>
+            <DatePickerComponent dptitle="Start Date" />
+            <DatePickerComponent dptitle="End Date" />
+          </Box>
 
           <br />
           <TextField

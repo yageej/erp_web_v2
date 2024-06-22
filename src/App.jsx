@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Attendance from "./components/Attendance";
@@ -17,50 +17,73 @@ import ReturnToWorkOrder from "./components/ReturnToWorkOrder";
 import AddTaskForm from "./components/AddTaskForm";
 import ViewCourse from "./components/ViewCourse";
 import CreateTask from "./components/CreateTask";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import BarLoader from "react-spinners/BarLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 function App() {
+  //for loading spinner
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   return (
     <>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Attendance />}></Route>
-          <Route
-            path="/Home"
-            element={<Attendance title="Attendance" />}
-          ></Route>
-          <Route path="/Tasks" element={<Tasks title="Tasks" />}></Route>
-          <Route
-            path="/Tasks/AddTaskForm"
-            element={<AddTaskForm title="Add Task Form" />}
-          ></Route>
-          <Route
-            path="/Documents"
-            element={<Documents title="Documents" />}
-          ></Route>
-          <Route
-            path="/Attendance&Roster"
-            element={<AttendanceandRoster title="Attendance & PTO" />}
-          ></Route>
-          <Route
-            path="/Course&Training"
-            element={<CourseandTraining title="Courses" />}
-          ></Route>{" "}
-          <Route
-            path="/Course&Training/View-Course"
-            element={<ViewCourse />}
-          ></Route>
-          <Route path="/Survey" element={<Survey title="Survey" />}></Route>
-          <Route path="/MyProfile" element={<MyProfile />}></Route>
-          <Route path="/IncidentReport" element={<IncidentReport />}></Route>
-          <Route path="/Termination" element={<Termination />}></Route>
-          <Route path="/MyATDApproval" element={<MyATDApproval />}></Route>
-          <Route path="/Resignation" element={<Resignation />}></Route>
-          <Route
-            path="/ReturnToWorkOrder"
-            element={<ReturnToWorkOrder />}
-          ></Route>
-        </Routes>
-      </Layout>
+      {loading ? (
+        <div className="Loader">
+          <PropagateLoader
+            loading={loading}
+            size={15}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Attendance />}></Route>
+            <Route
+              path="/Home"
+              element={<Attendance title="Attendance" />}
+            ></Route>
+            <Route path="/Tasks" element={<Tasks title="Tasks" />}></Route>
+            <Route
+              path="/Tasks/AddTaskForm"
+              element={<AddTaskForm title="Add Task Form" />}
+            ></Route>
+            <Route
+              path="/Documents"
+              element={<Documents title="Documents" />}
+            ></Route>
+            <Route
+              path="/Attendance&Roster"
+              element={<AttendanceandRoster title="Attendance & PTO" />}
+            ></Route>
+            <Route
+              path="/Course&Training"
+              element={<CourseandTraining title="Courses" />}
+            ></Route>{" "}
+            <Route
+              path="/Course&Training/View-Course"
+              element={<ViewCourse />}
+            ></Route>
+            <Route path="/Survey" element={<Survey title="Survey" />}></Route>
+            <Route path="/MyProfile" element={<MyProfile />}></Route>
+            <Route path="/IncidentReport" element={<IncidentReport />}></Route>
+            <Route path="/Termination" element={<Termination />}></Route>
+            <Route path="/MyATDApproval" element={<MyATDApproval />}></Route>
+            <Route path="/Resignation" element={<Resignation />}></Route>
+            <Route
+              path="/ReturnToWorkOrder"
+              element={<ReturnToWorkOrder />}
+            ></Route>
+          </Routes>
+        </Layout>
+      )}
     </>
   );
 }

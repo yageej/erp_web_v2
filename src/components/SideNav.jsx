@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 import { styled, useTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
@@ -197,7 +197,7 @@ const SideNav = (props) => {
           <AppBar
             position="fixed"
             open={open}
-            sx={{ bgcolor: "#F6F5F2", color: "black" }}
+            sx={{ bgcolor: "#3572EF", color: "white", fontWeight: "bold" }}
           >
             <Toolbar>
               <IconButton
@@ -213,7 +213,7 @@ const SideNav = (props) => {
                 <ListIcon />
               </IconButton>
               <Typography variant="h5" noWrap component="div">
-                ERP <LanguageTwoToneIcon />{" "}
+                <strong>ERP</strong> <LanguageTwoToneIcon />{" "}
                 <IconButton sx={{ marginLeft: 201 }}>
                   <NotificationsActiveTwoToneIcon />
                 </IconButton>
@@ -223,7 +223,7 @@ const SideNav = (props) => {
           <Drawer variant="permanent" open={open}>
             <DrawerHeader sx={{ bgcolor: "#F6F5F2", color: "black" }}>
               <IconButton onClick={handleDrawerClose}>
-                <Brightness5TwoToneIcon /> &nbsp; BEEPO 2.0
+                <Brightness5TwoToneIcon /> &nbsp; <strong>BEEPO 2.0</strong>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {theme.direction === "rtl" ? (
                   <ChevronRightIcon />
@@ -569,7 +569,8 @@ const SideNav = (props) => {
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <hr />
-                <>{props.children}</>
+
+                {props.children}
               </Grid>
             </Grid>
           </Box>

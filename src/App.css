@@ -1,0 +1,18 @@
+.Loader {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+@keyframes fadeinBottom {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+}

@@ -11,8 +11,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import FadeRight from "../FadeRight";
+import AnimationPerRoute from "../AnimationPerRoute";
+import FadeInBottom from "../FadeInBottom";
 
 const AddTaskForm = (props) => {
+  const animationClass = FadeInBottom();
+
   const { title } = props;
 
   const [tasks, setTasks] = useState(["Sample Task 1"]);
@@ -68,7 +73,7 @@ const AddTaskForm = (props) => {
     setDescription(e.target.value);
   }
   return (
-    <>
+    <div className={animationClass}>
       <h3>{title}</h3>
       <Box
         component="form"
@@ -176,7 +181,7 @@ const AddTaskForm = (props) => {
           </Link>
         </Box>
       </Box>
-    </>
+    </div>
   );
 };
 

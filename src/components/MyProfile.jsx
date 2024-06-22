@@ -11,8 +11,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import PersonalDetails from "./PersonalDetails";
 import { Person } from "@mui/icons-material";
+import AnimationPerRoute from "../AnimationPerRoute";
 
 const MyProfile = () => {
+  const animationClass = AnimationPerRoute();
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
@@ -20,7 +22,7 @@ const MyProfile = () => {
   };
 
   return (
-    <>
+    <div className={animationClass}>
       <h3>My Profile</h3>
       <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
@@ -96,7 +98,7 @@ const MyProfile = () => {
           <TabPanel value="7"></TabPanel>
         </TabContext>
       </Box>
-    </>
+    </div>
   );
 };
 

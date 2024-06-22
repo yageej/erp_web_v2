@@ -16,11 +16,14 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import AllCourses from "./AllCourses";
 import MyCourseLogo from "../assets/courselogo.jpg";
+import AnimationPerRoute from "../AnimationPerRoute";
 
 const CardComponent = (props) => {
+  const animationClass = AnimationPerRoute();
+
   const { coursetitle, coursedescription, key } = props;
   return (
-    <>
+    <div className={animationClass}>
       <Card sx={{ maxWidth: 345, margin: 4 }} key={key}>
         <CardMedia component="img" alt="" height="140" image={MyCourseLogo} />
         <CardContent>
@@ -36,7 +39,7 @@ const CardComponent = (props) => {
           <Button size="small">Remove from Favorites</Button>
         </CardActions>
       </Card>
-    </>
+    </div>
   );
 };
 

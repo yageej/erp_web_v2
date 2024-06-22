@@ -2,12 +2,15 @@
 
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import AnimationPerRoute from "../AnimationPerRoute";
+
 const DataGridComponent = (props) => {
   const { rows, columns } = props;
+  const animationClass = AnimationPerRoute();
 
   return (
     <>
-      <div style={{ height: "500", width: "100%" }}>
+      <div style={{ height: "500", width: "100%" }} className={animationClass}>
         <DataGrid
           rows={rows}
           columns={columns}

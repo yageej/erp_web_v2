@@ -18,10 +18,20 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
+import PersonalInfo from "./PersonalInfo";
+import FadeRight from "../FadeRight";
+import AddressInfo from "./AddressInfo";
+import ContactInfo from "./ContactInfo";
+import EmergencyContactInfo from "./EmergencyContactInfo";
+import CompanyInfo from "./CompanyInfo";
+import EmployeeDetailsInfo from "./EmployeeDetailsInfo";
 
-const PersonalDetails = () => {
+const PersonalDetails = (props) => {
+  const animationClass1 = AnimationPerRoute();
+  const animationClass2 = FadeRight();
+
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -60,26 +70,8 @@ const PersonalDetails = () => {
     setValue(newValue);
   };
 
-  // This is for select options element
-  const [gender, setGender] = React.useState("");
-
-  const handleChange2 = (event) => {
-    setGender(event.target.value);
-  };
-
-  const [bloodtype, setBloodType] = React.useState("");
-
-  const handleChange3 = (event) => {
-    setBloodType(event.target.value);
-  };
-
-  const [civilstatus, setCivilstatus] = React.useState("");
-
-  const handleChange4 = (event) => {
-    setCivilstatus(event.target.value);
-  };
   return (
-    <>
+    <div className={animationClass1}>
       <Box>
         <Grid container>
           <Grid item sx={6}>
@@ -88,7 +80,7 @@ const PersonalDetails = () => {
                 flexGrow: 1,
                 bgcolor: "background.paper",
                 display: "flex",
-                height: 400,
+                height: 300,
               }}
             >
               <Tabs
@@ -98,7 +90,7 @@ const PersonalDetails = () => {
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 sx={{
-                  borderRight: 3,
+                  borderRight: 1,
                   borderColor: "divider",
                 }}
               >
@@ -116,103 +108,45 @@ const PersonalDetails = () => {
               <Button sx={{ float: "right", fontSize: 19 }}>
                 <DriveFileRenameOutlineTwoToneIcon />
               </Button>
-              <h4>Personal Info</h4>{" "}
-              <Box sx={{ bgcolor: "paper", color: "Divider", padding: 3 }}>
-                <Box sx={{ display: "flex", flexWrap: "wrap", width: 750 }}>
-                  <br />
-                  <TextField
-                    label="First Name"
-                    disabled
-                    sx={{ margin: 1, width: 300 }}
-                  />
-                  <TextField
-                    label="Middle Name"
-                    disabled
-                    sx={{ margin: 1, width: 300 }}
-                  />
-                  <TextField
-                    label="Last Name"
-                    disabled
-                    sx={{ margin: 1, width: 300 }}
-                  />
-                </Box>
-                <br />
-                <Box sx={{ display: "flex", flexWrap: "wrap", width: 900 }}>
-                  <FormControl>
-                    <InputLabel id="demo-simple-select-label">
-                      Gender
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      label="Leave Type"
-                      value={gender}
-                      onChange={handleChange2}
-                      sx={{ width: 200, margin: 1 }}
-                    >
-                      <MenuItem value=" Male">Male</MenuItem>
-                      <MenuItem value=" Female">Female</MenuItem>
-                    </Select>
-                  </FormControl>
-
-                  <FormControl>
-                    <InputLabel id="demo-simple-select-label">
-                      Blood Type
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      label="Blood Type"
-                      value={bloodtype}
-                      onChange={handleChange3}
-                      sx={{ width: 200, margin: 1 }}
-                    >
-                      <MenuItem value="A">A</MenuItem>
-                      <MenuItem value="AB">AB</MenuItem>
-                      <MenuItem value="C">C</MenuItem>
-                    </Select>
-                  </FormControl>
-
-                  <FormControl>
-                    <InputLabel id="demo-simple-select-label">
-                      Civil Status
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      label="Civil Status"
-                      value={civilstatus}
-                      onChange={handleChange4}
-                      sx={{ width: 200, margin: 1 }}
-                    >
-                      <MenuItem value="Single ">Single</MenuItem>
-                      <MenuItem value="Married ">Married</MenuItem>
-                      <MenuItem value="Widowed ">Widowed</MenuItem>
-                      <MenuItem value="Separated ">Separated</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Box>
-              </Box>
+              <div className={animationClass2}>
+                <PersonalInfo title="Personal Information" />
+              </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              Item Two
+              <Button sx={{ float: "right", fontSize: 19 }}>
+                <DriveFileRenameOutlineTwoToneIcon />
+              </Button>
+              <div className={animationClass2}>
+                <AddressInfo title="Address Information" />
+              </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
-              Item Three
+              <Button sx={{ float: "right", fontSize: 19 }}>
+                <DriveFileRenameOutlineTwoToneIcon />
+              </Button>
+              <div className={animationClass2}>
+                <ContactInfo title="Contact Information" />
+              </div>
             </TabPanel>
             <TabPanel value={value} index={3}>
-              Item Four
+              <div className={animationClass2}>
+                <EmergencyContactInfo title="Emergency Contact Information" />
+              </div>
             </TabPanel>
             <TabPanel value={value} index={4}>
-              Item Five
+              <div className={animationClass2}>
+                <CompanyInfo title="Company Information" />
+              </div>
             </TabPanel>
             <TabPanel value={value} index={5}>
-              Item Six
+              <div className={animationClass2}>
+                <EmployeeDetailsInfo title="Employee Details" />
+              </div>
             </TabPanel>
           </Grid>
         </Grid>
       </Box>
-    </>
+    </div>
   );
 };
 
