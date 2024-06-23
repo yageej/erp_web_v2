@@ -23,7 +23,7 @@ import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRena
 import FadeRight from "../FadeRight";
 
 const SelectFieldComponent = (props) => {
-  const { il, val, oc, menu } = props;
+  const { il, val, oc, menu, id } = props;
   // This is for select options element
 
   const [civilstatus, setCivilstatus] = React.useState("");
@@ -32,7 +32,7 @@ const SelectFieldComponent = (props) => {
     setCivilstatus(event.target.value);
   };
   return (
-    <>
+    <React.Fragment key={id}>
       <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
         {il}
       </InputLabel>
@@ -50,7 +50,7 @@ const SelectFieldComponent = (props) => {
           </MenuItem>
         ))}
       </Select>
-    </>
+    </React.Fragment>
   );
 };
 

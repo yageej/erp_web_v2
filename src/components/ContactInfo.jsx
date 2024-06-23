@@ -90,8 +90,9 @@ const ContactInfo = (props) => {
             pl={inpf.placeholder}
             rows={inpf.rows}
             value={inpf.value}
-            key={key}
+            id={inpf.id}
             disabled={inpf.isDisabled}
+            key={key}
           />
         ))}
 

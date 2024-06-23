@@ -4,31 +4,63 @@ import { Button } from "@mui/material";
 import FadeRight from "../FadeRight";
 import InputFieldComponent from "./InputFieldComponent";
 
-const EmployeeDetailsInfo = (props) => {
+const StatutoryInfo = (props) => {
   const { title } = props;
   const animationClass = FadeRight();
 
   const inputFieldProps = [
     {
       id: 0,
-      label: "Skype ID",
-      value: "093124092",
+      label: "SSS ",
+      value: "",
       placeholder: "",
       rows: "1",
       isDisabled: true,
     },
     {
       id: 1,
-      label: "Date of Joining",
-      value: "2021-05-01",
+      label: "TIN",
+      value: "",
       placeholder: "",
       rows: "1",
       isDisabled: false,
     },
     {
       id: 2,
-      label: "Seniority",
-      value: "2021-12-01",
+      label: "PhilHealth",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 3,
+      label: "Pag-ibig",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 4,
+      label: "Tax Status",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 5,
+      label: "Bank",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 6,
+      label: "Bank Account Number",
+      value: "",
       placeholder: "",
       rows: "1",
       isDisabled: true,
@@ -50,17 +82,7 @@ const EmployeeDetailsInfo = (props) => {
               key={key}
             />
           ))}
-          {/* // sample line of code if inputfieldcomponent is not used */}
-          {/* <InputLabel id="demo-simple-select-label" sx={{ marginTop: 1 }}>
-            Seniority Date
-          </InputLabel>
-          <TextField
-            labelId="demo-simple-select-label"
-            variant="outlined"
-            fullWidth
-            size="small"
-            sx={{ width: 600, marginTop: 1 }}
-          />{" "} */}
+
           <Button sx={{ marginTop: 3, float: "right" }} variant="outlined">
             Update
           </Button>
@@ -70,4 +92,4 @@ const EmployeeDetailsInfo = (props) => {
   );
 };
 
-export default EmployeeDetailsInfo;
+export default StatutoryInfo;

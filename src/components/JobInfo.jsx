@@ -21,12 +21,12 @@ import { Link } from "react-router-dom";
 import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
+import DatePickerComponent from "./DatePickerComponent";
 import SelectFieldComponent from "./SelectFieldComponent";
 import InputFieldComponent from "./InputFieldComponent";
 
-const AddressInfo = (props) => {
+const JobInfo = (props) => {
   const { title } = props;
-  const animationClass = FadeRight();
   // This is for select options element
   const [gender, setGender] = React.useState("");
 
@@ -46,42 +46,90 @@ const AddressInfo = (props) => {
     setCivilstatus(event.target.value);
   };
 
-  const selectMenuValues = [
-    {
-      id: 2,
-      inputlabel: "Province",
-      value: civilstatus,
-      onChange: handleChange4,
-      menuitem: ["Province 1", "Province 2", "Province 3"],
-    },
-    {
-      id: 1,
-      inputlabel: "City",
-      value: civilstatus,
-      onChange: handleChange4,
-      menuitem: ["City A", " City B", " City C", "City D"],
-    },
-    {
-      id: 0,
-      inputlabel: "Barangay",
-      value: civilstatus,
-      onChange: handleChange4,
-      menuitem: ["Barangay 1", "Barangay 2", "Barangay 3"],
-    },
-  ];
-
   const inputFieldProps = [
     {
       id: 0,
-      label: "Address",
+      label: "Employee Rank",
       value: "",
-      placeholder: "Enter your Permanent Address here...",
-      rows: "4",
+      placeholder: "",
+      rows: "1",
       isDisabled: true,
     },
     {
       id: 1,
-      label: "Zip Code",
+      label: "Job Profile Category",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: false,
+    },
+    {
+      id: 2,
+      label: "Job Profile",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 3,
+      label: "Employee Grade",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 4,
+      label: "Employee Level",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 5,
+      label: "Designation",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 6,
+      label: "Employment Term",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 7,
+      label: "ManHour Type",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 8,
+      label: "Employee Type",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 9,
+      label: "Priviledge",
+      value: "",
+      placeholder: "",
+      rows: "1",
+      isDisabled: true,
+    },
+    {
+      id: 10,
+      label: "RAG Status",
       value: "",
       placeholder: "",
       rows: "1",
@@ -89,7 +137,7 @@ const AddressInfo = (props) => {
     },
   ];
   return (
-    <div className={animationClass}>
+    <>
       <h4>{title}</h4>
 
       <Box sx={{ width: "40rem", margin: 3 }}>
@@ -105,21 +153,17 @@ const AddressInfo = (props) => {
           />
         ))}
 
-        {selectMenuValues.map((s, key) => (
-          <SelectFieldComponent
-            il={s.inputlabel}
-            val={s.value}
-            oc={s.onChange}
-            menu={s.menuitem}
-            key={key}
-          />
-        ))}
         <Button sx={{ marginTop: 2, float: "right" }} variant="outlined">
           Update
         </Button>
+        {/* 
+  inputlable: "Contact Relation",
+value: "",
+onChange: "",
+menuitem: ["Parent", "Guardian", "Sibling"], */}
       </Box>
-    </div>
+    </>
   );
 };
 
-export default AddressInfo;
+export default JobInfo;

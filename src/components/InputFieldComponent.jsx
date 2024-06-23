@@ -23,12 +23,13 @@ import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRena
 import FadeRight from "../FadeRight";
 
 const InputFieldComponent = (props) => {
-  const { label, pl, rows, value, disabled, key } = props;
+  const { label, pl, rows, value, disabled, id } = props;
   return (
-    <React.Fragment key={key}>
+    <React.Fragment key={id}>
       <InputLabel id={label} sx={{ marginTop: 1 }}>
         {label}
       </InputLabel>
+
       <TextField
         labelid={label.toLowerCase()}
         variant="outlined"

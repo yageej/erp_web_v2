@@ -12,6 +12,10 @@ import { Button } from "@mui/material";
 import PersonalDetails from "./PersonalDetails";
 import { Person } from "@mui/icons-material";
 import AnimationPerRoute from "../AnimationPerRoute";
+import MyDocumentDetails from "./MyDocumentDetails";
+import ProfessionalDetails from "./ProfessionalDetails";
+import EmailandOtherAccessDetails from "./EmailandOtherAccessInfo";
+import StatutoryDetails from "./StatutoryDetails";
 
 const MyProfile = () => {
   const animationClass = AnimationPerRoute();
@@ -90,9 +94,15 @@ const MyProfile = () => {
           <TabPanel value="1">
             <PersonalDetails />
           </TabPanel>
-          <TabPanel value="2"></TabPanel>
-          <TabPanel value="3"></TabPanel>
-          <TabPanel value="4"></TabPanel>
+          <TabPanel value="2">
+            <MyDocumentDetails title="My Documents" />
+          </TabPanel>
+          <TabPanel value="3">
+            <ProfessionalDetails title="Professional Details" />
+          </TabPanel>
+          <TabPanel value="4">
+            <StatutoryDetails title="Professional Details" />
+          </TabPanel>
           <TabPanel value="5"></TabPanel>
           <TabPanel value="6"></TabPanel>
           <TabPanel value="7"></TabPanel>

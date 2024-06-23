@@ -117,6 +117,7 @@ const PersonalInfo = (props) => {
             rows={inpf.rows}
             value={inpf.value}
             disabled={inpf.isDisabled}
+            id={inpf.id}
             key={key}
           />
         ))}
@@ -130,6 +131,8 @@ const PersonalInfo = (props) => {
             val={s.value}
             oc={s.onChange}
             menu={s.menuitem}
+            id={s.id}
+            key={key}
           />
         ))}
 

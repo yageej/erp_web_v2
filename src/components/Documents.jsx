@@ -14,13 +14,13 @@ const Documents = (props) => {
   };
   const { title } = props;
   const columns = [
-    { field: "title", headerName: "Title", width: 200 },
-    { field: "department", headerName: "Department", width: 170 },
-    { field: "type", headerName: "Type", width: 150 },
-    { field: "category", headerName: "Category", width: 170 },
-    { field: "subcategory", headerName: "Sub-Category", width: 170 },
-    { field: "dateofsign", headerName: "Date of Sign", width: 170 },
-    { field: "recorddate", headerName: "Record Date", width: 150 },
+    { field: "title", headerName: "Title", width: 180 },
+    { field: "department", headerName: "Department", width: 150 },
+    { field: "type", headerName: "Type", width: 180 },
+    { field: "category", headerName: "Category", width: 150 },
+    { field: "subcategory", headerName: "Sub-Category", width: 180 },
+    { field: "dateofsign", headerName: "Date of Sign", width: 180 },
+    { field: "recorddate", headerName: "Record Date", width: 180 },
 
     {
       field: "",

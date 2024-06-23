@@ -31,25 +31,25 @@ const Tasks = (props) => {
     );
   };
   const mycolumns = [
-    { field: "TaskName", headerName: "My Task Name", width: 200 },
-    { field: "Priority", headerName: "Priority", width: 130 },
-    { field: "Status", headerName: "Status", width: 130 },
+    { field: "TaskName", headerName: "My Task Name", width: 250 },
+    { field: "Priority", headerName: "Priority", width: 180 },
+    { field: "Status", headerName: "Status", width: 180 },
     {
       field: "",
       headerName: "Action",
-      width: 100,
+      width: 150,
       // valueGetter: actionModify,
       renderCell: renderActionButton,
     },
   ];
   const teamcolumns = [
-    { field: "TaskName", headerName: "Team Task Name", width: 200 },
-    { field: "Priority", headerName: "Priority", width: 130 },
-    { field: "Status", headerName: "Status", width: 130 },
+    { field: "TaskName", headerName: "Team Task Name", width: 250 },
+    { field: "Priority", headerName: "Priority", width: 180 },
+    { field: "Status", headerName: "Status", width: 180 },
     {
       field: "",
       headerName: "Action",
-      width: 100,
+      width: 150,
       // valueGetter: actionModify,
       renderCell: renderActionButton,
     },

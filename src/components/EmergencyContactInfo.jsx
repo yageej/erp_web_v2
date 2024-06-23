@@ -109,8 +109,9 @@ const EmergencyContactInfo = (props) => {
               pl={inpf.placeholder}
               rows={inpf.rows}
               value={inpf.value}
-              key={key}
               disabled={inpf.isDisabled}
+              id={inpf.id}
+              key={key}
             />
           ))}
 
@@ -120,6 +121,7 @@ const EmergencyContactInfo = (props) => {
               val={s.value}
               oc={s.onChange}
               menu={s.menuitem}
+              key={key}
             />
           ))}
 

@@ -4,31 +4,31 @@ import { Button } from "@mui/material";
 import FadeRight from "../FadeRight";
 import InputFieldComponent from "./InputFieldComponent";
 
-const EmployeeDetailsInfo = (props) => {
+const EmailandOtherAccessDetails = (props) => {
   const { title } = props;
   const animationClass = FadeRight();
 
   const inputFieldProps = [
     {
       id: 0,
-      label: "Skype ID",
-      value: "093124092",
+      label: "Notification Email ID",
+      value: "geejay.argarin@probegroup.com.ph",
       placeholder: "",
       rows: "1",
       isDisabled: true,
     },
     {
       id: 1,
-      label: "Date of Joining",
-      value: "2021-05-01",
+      label: "MS Email ID",
+      value: "geejay.argarin@probegroup.com.ph",
       placeholder: "",
       rows: "1",
       isDisabled: false,
     },
     {
       id: 2,
-      label: "Seniority",
-      value: "2021-12-01",
+      label: "Access Card ID",
+      value: "2121212121",
       placeholder: "",
       rows: "1",
       isDisabled: true,
@@ -70,4 +70,4 @@ const EmployeeDetailsInfo = (props) => {
   );
 };
 
-export default EmployeeDetailsInfo;
+export default EmailandOtherAccessDetails;
