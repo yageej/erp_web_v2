@@ -230,7 +230,8 @@ const SideNav = (props) => {
               >
                 <ListIcon />
               </IconButton>
-              <strong>ERP</strong> <LanguageTwoToneIcon />{" "}
+              <strong>ERP</strong> &nbsp;&nbsp;
+              <LanguageTwoToneIcon />{" "}
               <IconButton sx={{ marginLeft: 201 }}>
                 <NotificationsActiveTwoToneIcon />
               </IconButton>

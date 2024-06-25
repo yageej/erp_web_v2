@@ -1,0 +1,70 @@
+[
+  {
+    "id": 0,
+    "type": "text",
+    "label": "First Name",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false
+  },
+  {
+    "id": 1,
+    "type": "text",
+
+    "label": "Middle Name",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false
+  },
+  {
+    "id": 2,
+    "type": "text",
+    "label": "Last Name",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false
+  },
+  {
+    "id": 3,
+    "type": "text",
+    "label": "Suffix",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false
+  },
+  {
+    "id": 4,
+    "type": "select",
+    "label": "Gender",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false,
+    "options": ["Male", "Female", "Prefer not to say"]
+  },
+  {
+    "id": 5,
+    "type": "date",
+    "label": "Date of Birth",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false
+  },
+  {
+    "id": 6,
+    "type": "select",
+    "label": "Blood Type",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false,
+    "options": ["A", "B", "AB", "O"]
+  },
+  {
+    "id": 7,
+    "type": "select",
+    "label": "Civil Status",
+    "placeholder": "",
+    "rows": "1",
+    "isDisabled": false,
+    "options": ["Single", "Married", "Widowed"]
+  }
+]

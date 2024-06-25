@@ -22,28 +22,45 @@ import AnimationPerRoute from "../AnimationPerRoute";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import FadeRight from "../FadeRight";
 
-const InputFieldComponent = (props) => {
-  const { label, pl, rows, value, disabled, id, type } = props;
-  return (
-    <React.Fragment key={id}>
-      <InputLabel id={label} sx={{ marginTop: 1 }}>
-        {label}
-      </InputLabel>
+const FormComponent = () => {
+  const data = [
+    {
+      type: "text",
+      label: "FirstName",
+      placeholder: "Enter your First Name",
+      onchange: "",
+    },
+    {
+      type: "date",
+      label: "Date",
+      placeholder: "Enter your date",
+      onchange: "",
+    },
+    {
+      type: "number",
+      label: "Number",
+      placeholder: "Enter your Number",
+      onchange: "",
+    },
+    {
+      type: "email",
+      label: "Email Address",
+      placeholder: "Enter your Email",
+      onchange: "",
+    },
+    {
+      type: "select",
+      label: "FirstName",
+      placeholder: "Enter your First Name",
+      onchange: "",
+    },
+  ];
 
-      <TextField
-        type={type}
-        labelid={label.toLowerCase()}
-        variant="outlined"
-        size="small"
-        value={value}
-        placeholder={pl}
-        multiline
-        rows={rows}
-        disabled={disabled}
-        sx={{ width: "inherit", marginTop: 1 }}
-      />
-    </React.Fragment>
+  return (
+    <>
+      <FormControl></FormControl>
+    </>
   );
 };
 
-export default InputFieldComponent;
+export default FormComponent;
