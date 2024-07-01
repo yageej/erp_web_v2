@@ -1,20 +1,46 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import DataGridComponent from "./DataGridComponent";
-
 import AddTaskTwoToneIcon from "@mui/icons-material/AddTaskTwoTone";
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import TabComponent from "./TabComponent";
 import { Button } from "@mui/material";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import AnimationPerRoute from "../AnimationPerRoute";
+import axios from "axios";
 
 const Tasks = (props) => {
+  const [taskData, setTaskData] = useState([]);
+
+  const url = "http://localhost:3000/api/tasks";
+  // const getTaskData = () => {
+  // axios
+  //   .get(url)
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch((err) => {
+  //     console≠log(err);
+  //   });
+  useEffect(() => {
+    axios
+      .get(url, { crossdomain: true })
+      .then((result) => {
+        // console.log("result", result.data.task);
+        // console.log("result", ...result.data);
+        setTaskData(result.data);
+        // console.log("Data Collected", result.data[0]);
+      })
+      .catch((error) => {
+        // console.log("Error", error);
+      });
+  }, []);
+
   const animationClass = AnimationPerRoute();
 
   const { title } = props;
@@ -23,6 +49,7 @@ const Tasks = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const renderActionButton = (p) => {
     return (
       <Button variant="outlined">
@@ -30,10 +57,11 @@ const Tasks = (props) => {
       </Button>
     );
   };
+
   const mycolumns = [
-    { field: "TaskName", headerName: "My Task Name", width: 250 },
-    { field: "Priority", headerName: "Priority", width: 180 },
-    { field: "Status", headerName: "Status", width: 180 },
+    { field: "taskname", headerName: "My Task Name", width: 250 },
+    { field: "priority", headerName: "Priority", width: 180 },
+    { field: "status", headerName: "Status", width: 180 },
     {
       field: "",
       headerName: "Action",
@@ -43,9 +71,9 @@ const Tasks = (props) => {
     },
   ];
   const teamcolumns = [
-    { field: "TaskName", headerName: "Team Task Name", width: 250 },
-    { field: "Priority", headerName: "Priority", width: 180 },
-    { field: "Status", headerName: "Status", width: 180 },
+    { field: "taskname", headerName: "Team Task Name", width: 250 },
+    { field: "priority", headerName: "Priority", width: 180 },
+    { field: "status", headerName: "Status", width: 180 },
     {
       field: "",
       headerName: "Action",
@@ -54,66 +82,12 @@ const Tasks = (props) => {
       renderCell: renderActionButton,
     },
   ];
-  const rows = [
-    {
-      id: 2,
-      TaskName: "Do Something",
-      Priority: "Low",
-      Status: "Active",
-      Action: 42,
-    },
-    {
-      id: 3,
-      TaskName: "Do Something",
-      Priority: "Urgent",
-      Status: "InActive",
-      Action: 42,
-    },
-    {
-      id: 4,
-      TaskName: "Do Something",
-      Priority: "Urgent",
-      Status: "Active",
-      Action: 42,
-    },
-    {
-      id: 5,
-      TaskName: "Do Something",
-      Priority: "Urgent",
-      Status: "Active",
-      Action: 42,
-    },
-  ];
-  const teamrows = [
-    {
-      id: 2,
-      TaskName: "Team Task Something",
-      Priority: "High",
-      Status: "Active",
-      Action: 42,
-    },
-    {
-      id: 3,
-      TaskName: "Team Task Something",
-      Priority: "High",
-      Status: "InActive",
-      Action: 42,
-    },
-    {
-      id: 4,
-      TaskName: "Team Task Something",
-      Priority: "Low",
-      Status: "Active",
-      Action: 42,
-    },
-    {
-      id: 5,
-      TaskName: "Team Task Something",
-      Priority: "High",
-      Status: "Inactive",
-      Action: 42,
-    },
-  ];
+
+  const rowsdata = taskData;
+
+  const isTeamData = rowsdata.filter((r) => r.isTeamTask === "Yes");
+  const isMyData = rowsdata.filter((r) => r.isTeamTask !== "Yes");
+
   return (
     <div className={animationClass}>
       <h3>{title}</h3>
@@ -147,10 +121,10 @@ const Tasks = (props) => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <DataGridComponent rows={rows} columns={mycolumns} />
+            <DataGridComponent rows={isMyData} columns={mycolumns} />
           </TabPanel>
           <TabPanel value="2">
-            <DataGridComponent rows={teamrows} columns={teamcolumns} />
+            <DataGridComponent rows={isTeamData} columns={teamcolumns} />
           </TabPanel>
         </TabContext>
         {/* <TabComponent

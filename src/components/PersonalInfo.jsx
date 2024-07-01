@@ -59,19 +59,19 @@ const PersonalInfo = (props) => {
   //   console.log(`this is the result: `, data[i].type);
   // }
 
-  const [dataset, newDataset] = useState(data);
+  const [state, newState] = useState(data);
+
+  // console.log(state);
 
   const handleChange = (e) => {
-    newDataset((p) => {
-      let identifier = { ...p };
-
-      identifier[`${e.target.id}`] = e.target.value;
-      console.log(identifier);
-      return identifier;
+    const value = e.target.value;
+    setState({
+      ...state,
+      [e.target.value]: value,
     });
   };
 
-  console.log(dataset.id);
+  // console.log(dataset.id);
   // console.log(dataset);
   // console.log(data);
   const dataField = data.map((d) =>
@@ -87,7 +87,7 @@ const PersonalInfo = (props) => {
           InputLabelProps={{ shrink: true }}
           pl={d.placeholder}
           rows={d.rows}
-          value={dataset.id}
+          value={state.value}
           disabled={d.isDisabled}
           size="small"
           onChange={handleChange}
@@ -103,7 +103,7 @@ const PersonalInfo = (props) => {
           size="small"
           labelid={d.label}
           id="demo-simple-select"
-          value={dataset.id}
+          value={d.id}
           onChange={handleChange}
           sx={{ width: 350, marginTop: 1 }}
         >

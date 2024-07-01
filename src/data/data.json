@@ -10,7 +10,6 @@
   {
     "id": 1,
     "type": "text",
-
     "label": "Middle Name",
     "placeholder": "",
     "rows": "1",

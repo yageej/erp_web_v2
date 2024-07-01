@@ -21,21 +21,27 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import MyImage from "../assets/att2.png";
 import AnimationPerRoute from "../AnimationPerRoute";
+import axios from "axios";
 
 const Attendance = () => {
   const animationClass = AnimationPerRoute();
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
+  const [quote, setQoute] = useState("");
+  const url = "https://api.quotable.io/random";
+  const getQoute = () => {
+    axios
+      .get(url)
+      //get response
+      .then((res) => {
+        console.log(res);
 
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
+        setQoute(res.data.content);
+      })
+      //catch error
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className={animationClass}>
@@ -140,6 +146,10 @@ const Attendance = () => {
                   </Card>
                 </Grid>
               </Grid>
+              <Card sx={{ minWidth: 5, alignContent: "center" }}>
+                {quote && <h2>{quote}</h2>}
+                <Button onClick={getQoute}>Get a random Qoute now!</Button>
+              </Card>
             </div>
           </Grid>
 
